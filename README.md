@@ -1,12 +1,4 @@
-# Dash Quickstart
-
-This purpose of this repo is to help you get started with Dash and to make  high quality apps faster.
-
-It will eventually be turned into an app, but in the meantime, I hope you find this info helpful.  (I use it
-when I'm coding)
-
-This is a work in progress.  If you have comments or suggestions, please feel free to [start a new issue](https://github.com/AnnMarieW/dash-quickstart/issues/new) 
-or do a pull request. I'd be delighted to hear from you!
+# Dash Quickstart -- make quality Dash apps faster!
 
  
  Topics:
@@ -23,7 +15,7 @@ or do a pull request. I'd be delighted to hear from you!
 
    
  __[Error Messages](https://github.com/AnnMarieW/dash-quickstart/tree/master/error-messages)__
-   - Dash error messages are often confusing and unhelpful. I'll explain what they mean and the most likely cause. 
+   - Dash error messages are often confusing. I'll explain what they mean and the most likely cause. 
    And more importantly, how to fix them.
  
  __[Where to find more help](https://github.com/AnnMarieW/dash-quickstart/tree/master/where-to-find-help)__
@@ -32,3 +24,11 @@ or do a pull request. I'd be delighted to hear from you!
  __[Show and Tell](https://github.com/AnnMarieW/dash-quickstart/tree/master/show-and-tell)__  
    - It's so much fun to get your first apps working.  Show them off here!
  
+ 
+ 
+ 
+The data in this repo will eventually be turned into an app, but in the meantime, I hope you find this info helpful.  (I use it
+when I'm coding)
+
+This is a work in progress.  If you have comments or suggestions, please feel free to [start a new issue](https://github.com/AnnMarieW/dash-quickstart/issues/new) 
+or do a pull request. I'd be delighted to hear from you!

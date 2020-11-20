@@ -222,6 +222,17 @@ df = px.data.tips()
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/solar.csv')
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
 
+data = dict(
+    [
+        ("Date", ["2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"]),
+        ("Region", ["Montreal", "Toronto", "New York City", "Miami", "San Francisco", "London"]),
+        ("Temperature", [1, -20, 3.512, 4, 10423, -441.2]),
+        ("Humidity", [10, 20, 30, 40, 50, 60]),
+        ("Pressure", [2, 10924, 3912, -10, 3591.2, 15]),
+    ]
+)
+df = pd.DataFrame(data)
+
 
 ```
 
@@ -271,4 +282,97 @@ def display(btn1, btn2):
         # do something...
         
 
+```
+
+## __Components:__
+
+Find out more by typing in your Python terminal:  help(dash_core_components.Checklist) or any other component name.
+Here are a few popular components with some sample prop settings:
+
+### dcc.Checklist
+see also dcc.RadioItems
+```
+dcc.Checklist(
+    options=[
+        {'label': 'New York City', 'value': 'NYC'},
+        {'label': 'Montréal', 'value': 'MTL'},
+        {'label': 'San Francisco', 'value': 'SF'}
+    ],
+    value=['NYC', 'MTL'],
+    labelStyle={'display': 'inline-block'}
+) 
+```
+
+---
+### dcc.Dropdown
+```
+dcc.Dropdown(
+    options=[
+        {'label': 'New York City', 'value': 'NYC'},
+        {'label': 'Montreal', 'value': 'MTL'},
+        {'label': 'San Francisco', 'value': 'SF'},
+    ],
+    value=['MTL'],  #if multi=False, this must be a string and not a list (remove the [])
+    multi=True,
+    clearable=False
+    placeholder='Select a city'
+)  
+```
+### dcc.Slider
+see also dcc.SliderRange
+```
+dcc.Slider(
+    min=0,
+    max=100,
+    value=65,
+    marks={
+        0: {'label': '0 °C', 'style': {'color': '#77b0b1'}},
+        26: {'label': '26 °C'},
+        37: {'label': '37 °C'},
+        100: {'label': '100 °C', 'style': {'color': '#f50'}}
+    },
+    included=False
+)  
+```
+---
+
+### dcc.Input
+
+```dcc.Input(id="input2", type="text", placeholder="", debounce=True),```
+
+note: allowed types = (
+    "text", "number", "password", "email", "search",
+    "tel", "url", "range", "hidden",
+)
+
+### html.Button
+``` html.Button('Button 1', id='btn-nclicks-1', n_clicks=0),```
+
+### dcc.DatePickerRange
+see also DatePickerSinge
+```
+dcc.DatePickerRange(
+        id="my-date-picker-range",  
+        calendar_orientation="horizontal",  # vertical or horizontal
+        day_size=39,  # size of calendar image. Default is 39
+        end_date_placeholder_text="Return",  
+        with_portal=False,  # if True calendar will open in a full screen overlay portal
+        first_day_of_week=0,  # Display of calendar when open (0 = Sunday)
+        reopen_calendar_on_clear=True,
+        is_RTL=False,  # True or False for direction of calendar
+        clearable=True,  # whether or not the user can clear the dropdown
+        number_of_months_shown=1,  
+        min_date_allowed=date(1995, 8, 5),
+        max_date_allowed=date(2020, 8, 5),
+        initial_visible_month=date(2020, 8, 5),
+        start_date=
+        end_date=
+        display_format="D-M-Y",  # how selected dates are displayed
+        month_format="MMMM, YYYY",  # how calendar headers are displayed when the calendar is opened.
+        minimum_nights=1, 
+        persistence=True,
+        persisted_props=["start_date"],
+        persistence_type="session",  # session, local, or memory. Default is 'local'
+        updatemode="singledate",  # singledate or bothdates. Determines when callback is triggered
+    ),
 ```

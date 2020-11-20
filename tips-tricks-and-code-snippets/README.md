@@ -10,7 +10,8 @@ maintain and debug. One method is to to use a [multi-page app file structure](ht
 
 - When debugging, it's helpful to use your IDE's debug tools, or a debugger such as `ipdb`.
 Another method is to use strategically placed `print` statements (very helpful in callbacks).
-Note that you can also use`print(fig)` to see how a  Plotly figure is defined.
+Note that you can also use`print(fig)` to see how a  Plotly figure is defined.  See more on debugging in the error
+message topic.
 
 - To track performance, you can find great information on how long callbacks are taking by using the 
 [Dev tools](https://dash.plotly.com/devtools).  The callback graph is fascinating!
@@ -19,6 +20,9 @@ Note that you can also use`print(fig)` to see how a  Plotly figure is defined.
  color, put all the colors in a dictionary in the global namespace. Then assign the colors using the dictionary key.   
  When the colors are defined in  one place, it's easier to manage and change the color schemes.  This becomes even
   more important as the size of you app grows. See example here(link)
+  
+- To see all of the properties available for a component,  type this in your Python console:
+``` help(dash_core_components.Slider)```   or any other component name
 
 # How To:
 
