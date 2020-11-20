@@ -1,5 +1,5 @@
 
-## __Demo apps that can be use as templates:__
+## __Demo apps - can be used as templates:__
 
 -  See the collection of apps in the [Plotly Dash app gallery](https://dash-gallery.plotly.host/Portal/)
 
