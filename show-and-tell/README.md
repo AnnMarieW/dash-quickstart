@@ -1,5 +1,5 @@
 
-# My first Dash apps!
+# My first Dash app!
 It's so exciting when you get your first app running.  Share it here!
 
 Pull requests are welcome.  Or feel free to share it by [creating a new issue](https://github.com/AnnMarieW/dash-quickstart/issues/new)

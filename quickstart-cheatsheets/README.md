@@ -207,7 +207,7 @@ import numpy as np
 df = pd.DataFrame(np.random.randn(6, 4), columns=list('ABCD'))
 ```
 
-Datsets used frequently in the Dash and Plotly tutorials:
+Datsets frequently used in the Dash and Plotly tutorials:
 ```
 import plotly.express as px
 df = px.data.gapminder()
@@ -224,9 +224,9 @@ df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapmi
 
 - [Dash advanced callbacks tutorial](https://dash.plotly.com/advanced-callbacks)
 
-In certain situations, you don't want to update the callback output. Here are some code snippets
+In certain situations, you don't want to update the callback output. Here are some code snippets:
 
-PreventUpdate (all outputsof this callback will not update)
+`PreventUpdate` (all outputs of this callback will not update)
 ```
 from dash.exceptions import PreventUpdate
 
@@ -236,23 +236,28 @@ def update_output(n_clicks):
         raise PreventUpdate
 ```
 
-dash.no_update (certain outputs of a callback will not update)
+ ---
+
+`dash.no_update` (certain outputs of a callback will not update)
 Here, the first output is not updated and the second one, a graph,  is updated.
 
 ```
     return dash.no_update, figure
 ```
-dash.callback_context (Which input triggered a callback?)
+
+---
+
+`dash.callback_context` (Which input triggered a callback?)
 ```
 @app.callback(Output('container', 'children'),
                Input('btn-1', 'n_clicks'),
                Input('btn-2', 'n_clicks'))              
 def display(btn1, btn2):
     ctx = dash.callback_context
+    input_id = ctx.triggered[0]['prop_id'].split('.')[0]
 
-    if not ctx.triggered:
-        button_id = 'No clicks yet'
-    else:
-        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+    if input_id = 'btn-1':
+        # do something...
+        
 
 ```

@@ -1,12 +1,12 @@
 # Where to find cool dash apps
 
-### __Use these apps for inspiration:__
+### __These apps are inspirational:__
 
 - [Plotly Dash app gallery](https://dash-gallery.plotly.host/Portal/)
 
 - [Show-and-tell category in the Dash Community Forum](https://community.plotly.com/tag/show-and-tell)
 ---
-### __Example apps that can be used as templates:__
+### __Example apps -- for use as templates:__
 
 - [Graph with images inside bubble](https://community.plotly.com/t/put-images-inside-bubbles/41364/2)
 
