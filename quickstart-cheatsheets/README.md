@@ -198,16 +198,21 @@ if __name__ == '__main__':
 ```
 
 
-## __Datasets and Pandas__
+## __Datasets: Plotly datasets and generic Pandas dataframes__
 
-- [10 minutes to Pandas](https://pandas.pydata.org/docs/user_guide/10min.html)
+It's often helpful to test an app with sample data.  Here are examples of  built-in sample data from Plotly and some random data 
+you can generate from Numpy. 
+
+- Sample data from my favorite Pandas tutorial: [10 minutes to Pandas](https://pandas.pydata.org/docs/user_guide/10min.html).
+
+
 ```
 import pandas as pd
 import numpy as np
 df = pd.DataFrame(np.random.randn(6, 4), columns=list('ABCD'))
 ```
 
-Datsets frequently used in the Dash and Plotly tutorials:
+- Datasets frequently used in the Dash and Plotly tutorials:
 ```
 import plotly.express as px
 df = px.data.gapminder()
@@ -220,17 +225,20 @@ df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapmi
 
 ```
 
-## __Callback extras__
+## __More info on Callbacks__
 
 - [Dash advanced callbacks tutorial](https://dash.plotly.com/advanced-callbacks)
 
-In certain situations, you don't want to update the callback output. Here are some code snippets:
+In certain cases, you don't want to update the callback output. Here are some examples:
 
-`PreventUpdate` (all outputs of this callback will not update)
+`PreventUpdate`   
+
+All outputs of this callback will not update `if n_clicks is None`:
 ```
 from dash.exceptions import PreventUpdate
 
-# dash callback
+# code snippet from a dash callback:
+
 def update_output(n_clicks):
     if n_clicks is None:
         raise PreventUpdate
@@ -238,7 +246,8 @@ def update_output(n_clicks):
 
  ---
 
-`dash.no_update` (certain outputs of a callback will not update)
+`dash.no_update`  
+
 Here, the first output is not updated and the second one, a graph,  is updated.
 
 ```
@@ -247,7 +256,8 @@ Here, the first output is not updated and the second one, a graph,  is updated.
 
 ---
 
-`dash.callback_context` (Which input triggered a callback?)
+`dash.callback_context`  
+ Which input triggered a callback?
 ```
 @app.callback(Output('container', 'children'),
                Input('btn-1', 'n_clicks'),
