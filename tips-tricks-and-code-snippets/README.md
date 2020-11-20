@@ -1,8 +1,8 @@
 # Tips and Tricks
 
-- When you have multiple inputs and outputs, the callbacks can get quite verbose.  It's a 
-[best practice](https://github.com/plotly/dash/issues/1054) to break the callbacks into smaller functions
- so that a multiple-input callback is more a router. (todo AMW - create an example)
+- When you have multiple inputs and outputs, the callbacks can get quite long.  A 
+[best practice](https://github.com/plotly/dash/issues/1054) is to break the callbacks into smaller functions
+ so that a multiple-input callback acts like a router. (todo AMW - create and link to an example)
 
 - As you add more features and pages to your app, it can grow to be hundreds (or thousands!) of lines of code. 
  It then becomes even more important to organize your code so it's easier to 
@@ -14,6 +14,11 @@ Note that you can also use`print(fig)` to see how a  Plotly figure is defined.
 
 - To track performance, you can find great information on how long callbacks are taking by using the 
 [Dev tools](https://dash.plotly.com/devtools).  The callback graph is fascinating!
+
+- When using custom colors in your app, such as to specify the color of a trace in a figure,  background color or text
+ color, put all the colors in a dictionary in the global namespace. Then assign the colors using the dictionary key.   
+ When the colors are defined in  one place, it's easier to manage and change the color schemes.  This becomes even
+  more important as the size of you app grows. See example here(link)
 
 # How To:
 

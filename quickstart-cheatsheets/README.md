@@ -1,7 +1,7 @@
 # Dash Quickstart Apps #
 
 
-This is a collection of quickstart apps from the Dash Tutorial, Dash Community Forum and other opensources.
+This is a collection of quickstart apps from the Dash Tutorial, Dash Community Forum and other resources.
 
 ---
 
@@ -201,7 +201,7 @@ if __name__ == '__main__':
 ## __Datasets: Plotly datasets and generic Pandas dataframes__
 
 It's often helpful to test an app with sample data.  Here are examples of  built-in sample data from Plotly and some random data 
-you can generate from Numpy. 
+you can generate with Numpy. 
 
 - Sample data from my favorite Pandas tutorial: [10 minutes to Pandas](https://pandas.pydata.org/docs/user_guide/10min.html).
 
@@ -225,13 +225,13 @@ df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapmi
 
 ```
 
-## __More info on Callbacks__
+## __Callbacks:__
 
 - [Dash advanced callbacks tutorial](https://dash.plotly.com/advanced-callbacks)
 
-In certain cases, you don't want to update the callback output. Here are some examples:
+In certain cases, you don't want to update the callback output. Here's how:
 
-`PreventUpdate`   
+Using `PreventUpdate`   
 
 All outputs of this callback will not update `if n_clicks is None`:
 ```
@@ -246,7 +246,7 @@ def update_output(n_clicks):
 
  ---
 
-`dash.no_update`  
+Using `dash.no_update`  
 
 Here, the first output is not updated and the second one, a graph,  is updated.
 
@@ -255,9 +255,10 @@ Here, the first output is not updated and the second one, a graph,  is updated.
 ```
 
 ---
+Which input triggered a callback?  
 
-`dash.callback_context`  
- Which input triggered a callback?
+Using  `dash.callback_context`  
+ 
 ```
 @app.callback(Output('container', 'children'),
                Input('btn-1', 'n_clicks'),
@@ -266,7 +267,7 @@ def display(btn1, btn2):
     ctx = dash.callback_context
     input_id = ctx.triggered[0]['prop_id'].split('.')[0]
 
-    if input_id = 'btn-1':
+    if input_id == 'btn-1':
         # do something...
         
 
