@@ -1,7 +1,7 @@
 # Dash Quickstart Apps #
 
 
-This is a collection of quickstart apps from the Dash tutorial, community forum and other opensources.
+This is a collection of quickstart apps from the Dash Tutorial, Dash Community Forum and other opensources.
 
 ---
 

@@ -5,7 +5,7 @@
 
 - [Show-and-tell category in the Dash Community Forum](https://community.plotly.com/tag/show-and-tell)
 ---
-##__Example apps -- for use as templates:__
+## __Example apps -- for use as templates:__
 
 - [Graph with images inside bubble](https://community.plotly.com/t/put-images-inside-bubbles/41364/2)
 
