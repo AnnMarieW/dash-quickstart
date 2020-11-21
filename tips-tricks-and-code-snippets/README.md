@@ -2,8 +2,6 @@
 
 ### __DataTables__
 
-- How to: do conditonal formatting.  Here is [an app] like the one used in the [Conditional Formatting](https://dash.plotly.com/datatable/conditional-formatting) example from the Dash Tutorial
-
 - How to: [format numbers in a Dash DataTable](https://formattable.pythonanywhere.com/)
 
     This is a handy tutorial app to see how the d3-format library is used to format numerical data
@@ -23,11 +21,16 @@
 
 - How to: [move the toggle columns button](https://community.plotly.com/t/datatable-toggle-columns-button-placement-in-python/46768/2)
 
+
+- How to: do conditonal formatting.  Here is [an app](https://github.com/AnnMarieW/dash-quickstart/blob/master/tips-tricks-and-code-snippets/conditional_formatting.py) 
+like the one used in the [Conditional Formatting](https://dash.plotly.com/datatable/conditional-formatting) example from the Dash Tutorial
+
+
 ### __Bootstrap__
 
 - How to: make a [model for help text](https://community.plotly.com/t/any-way-to-create-an-instructions-popout/18828/11?u=annmariew)
 
-- How to: make a [live stages progress bar](https://community.plotly.com/t/live-stage-visualization/45095)"
+- How to: make a [live stages progress bar](https://community.plotly.com/t/live-stage-visualization/45095)
 
 ### __Multi-page apps__
 

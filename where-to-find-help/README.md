@@ -1,6 +1,6 @@
 # Need more help?
 
-- The best source of information about Dash is in the official Plotly [Dash Tutorial](https://dash.plotly.com/installation).
+- One of the best source of information about Dash is in the official Plotly [Dash Tutorial](https://dash.plotly.com/installation).
 It's continually being updated as new features are added to Dash and Plotly.  It also has lots of great examples.  
 
 - Check out the  [Dash Community Forum](https://community.plotly.com/). You will probably find an answer in one of the posts,
