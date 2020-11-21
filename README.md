@@ -24,7 +24,7 @@
   
 ___
 
-The data in this info will eventually be turned into an app, but in the meantime, I hope you find it helpful.  
+The data in this repo will eventually be turned into an app, but in the meantime, I hope you find it helpful.  
 
 This is a work in progress.  If you have comments or suggestions, please feel free to [start a new issue](https://github.com/AnnMarieW/dash-quickstart/issues/new) 
 or do a pull request. I'd be delighted to hear from you!

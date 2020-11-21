@@ -51,7 +51,7 @@ message topic.
 
 - When using custom colors in your app, put all the colors in a dictionary in the global namespace. Then assign the colors 
 using the dictionary.   When the colors are defined in one place, it's easier to manage and change the color schemes.  
-This becomes even more important as the size of you app grows. See example here(link)
+This becomes even more important as the size of you app grows. See example [here](https://github.com/AnnMarieW/dash-quickstart/blob/master/tips-tricks-and-code-snippets/global_color_dict.py)
   
 - To see all of the properties available for a component,  type this in your Python console:
 ``` help(dash_core_components.Slider)```   or any other component name
