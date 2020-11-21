@@ -3,7 +3,7 @@
  
  
  __[Quickstart Cheatsheets](https://github.com/AnnMarieW/dash-quickstart/tree/master/quickstart-cheatsheets)__
-   - A collection of minimal apps to get you started.  These are especially useful for making small sample apps to try
+   - A collection of minimal apps to get you started.  These are useful for making small sample apps to try
    different features or component properties.
  
  __[Tips & Tricks and code snippets](https://github.com/AnnMarieW/dash-quickstart/tree/master/tips-tricks-and-code-snippets)__

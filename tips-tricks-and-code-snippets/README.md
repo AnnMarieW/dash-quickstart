@@ -23,18 +23,25 @@
 
 - How to: [move the toggle columns button](https://community.plotly.com/t/datatable-toggle-columns-button-placement-in-python/46768/2)
 
+### __Bootstrap__
+
+- How to: make a [model for help text](https://community.plotly.com/t/any-way-to-create-an-instructions-popout/18828/11?u=annmariew)
+
+- How to: make a [live stages progress bar](https://community.plotly.com/t/live-stage-visualization/45095)"
+
 ### __Multi-page apps__
 
  - How to: turn 2 single page apps into a multi-page app. We start with [this app](https://dash.plotly.com/interactive-graphing) 
- and [this app](https://dash.plotly.com/basic-callbacks) from the Dash Tutorial.  See it as a multi-page app in [this directory]().
+ and [this app](https://dash.plotly.com/basic-callbacks) from the Dash Tutorial.  See it as a multi-page app in 
+ [this directory](https://github.com/AnnMarieW/dash-quickstart/tree/master/tips-tricks-and-code-snippets/multi-page-app).
  This is done following the [Structuring a Multi-Page App](https://dash.plotly.com/urls) example.
 
 
 
-### __It's Live!__
+### __Deployment__
 - How to: [deploy your app on Heroku](https://community.plotly.com/t/deploying-your-dash-app-to-heroku-the-magical-guide/46723)
 
-- [How to: deploy your app on pythonanywhere.com](https://github.com/conradho/dashingdemo)
+- How to: [deploy your app on pythonanywhere.com](https://github.com/conradho/dashingdemo)
 
 ---
 
