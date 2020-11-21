@@ -1,3 +1,36 @@
+# How To:
+
+### __DataTables__
+
+- How to: do conditonal formatting.  Here is [an app] like the one used in the [Conditional Formatting](https://dash.plotly.com/datatable/conditional-formatting) example from the Dash Tutorial
+
+- How to: [format numbers in a Dash DataTable](https://formattable.pythonanywhere.com/)
+
+    This is a handy tutorial app to see how the d3-format library is used to format numerical data
+    in a dash datatable. You can make selections and see the code used to format the table
+    
+- How to: [fix a datatable where the first characters are cut off](https://community.plotly.com/t/datatable-incorrectly-displayed-at-left-and-right-edge-and-distort-after-update-columns/41265/6)
+
+- How to: move the export button --> Add the following to your [css file in the assets folder](https://dash.plotly.com/external-resources)
+```
+.export{
+    position: absolute;
+    right: 50%;
+    font-type: sans-serif;
+    [...]
+}
+```
+
+- How to: [move the toggle columns button](https://community.plotly.com/t/datatable-toggle-columns-button-placement-in-python/46768/2)
+
+### __It's Live!__
+- How to: [deploy your app on Heroku](https://community.plotly.com/t/deploying-your-dash-app-to-heroku-the-magical-guide/46723)
+
+- [How to: deploy your app on pythonanywhere.com](https://github.com/conradho/dashingdemo)
+
+---
+
+
 # Tips and Tricks
 
 - When you have multiple inputs and outputs, the callbacks can get quite long.  A 
@@ -16,37 +49,9 @@ message topic.
 - To track performance, you can find great information on how long callbacks are taking by using the 
 [Dev tools](https://dash.plotly.com/devtools).  The callback graph is fascinating!
 
-- When using custom colors in your app, such as to specify the color of a trace in a figure,  background color or text
- color, put all the colors in a dictionary in the global namespace. Then assign the colors using the dictionary key.   
- When the colors are defined in  one place, it's easier to manage and change the color schemes.  This becomes even
-  more important as the size of you app grows. See example here(link)
+- When using custom colors in your app, put all the colors in a dictionary in the global namespace. Then assign the colors 
+using the dictionary.   When the colors are defined in one place, it's easier to manage and change the color schemes.  
+This becomes even more important as the size of you app grows. See example here(link)
   
 - To see all of the properties available for a component,  type this in your Python console:
 ``` help(dash_core_components.Slider)```   or any other component name
-
-# How To:
-
-### __DataTables__
-- [How to: format numbers in a Dash DataTable](https://formattable.pythonanywhere.com/)
-
-    This is a handy tutorial app to see how the d3-format library is used to format numerical data
-    in a dash datatable. You can make selections and see the code used to format the table
-    
-- [How to: fix a datatable where the first characters are cut off](https://community.plotly.com/t/datatable-incorrectly-displayed-at-left-and-right-edge-and-distort-after-update-columns/41265/6)
-
-- How to: move the export button --> Add the following to your [css file in the assets folder](https://dash.plotly.com/external-resources)
-```
-.export{
-    position: absolute;
-    right: 50%;
-    font-type: sans-serif;
-    [...]
-}
-```
-
-- [How to: move the toggle columns button](https://community.plotly.com/t/datatable-toggle-columns-button-placement-in-python/46768/2)
-
-### __It's Live!__
-- [How to: deploy your app on Heroku](https://community.plotly.com/t/deploying-your-dash-app-to-heroku-the-magical-guide/46723)
-
-- [How to: deploy your app on pythonanywhere.com](https://github.com/conradho/dashingdemo)

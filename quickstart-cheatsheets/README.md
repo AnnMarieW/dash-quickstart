@@ -200,10 +200,8 @@ if __name__ == '__main__':
 
 ## __Datasets: Plotly datasets and generic Pandas dataframes__
 
-It's often helpful to test an app with sample data.  Here are examples of  built-in sample data from Plotly and some random data 
-you can generate with Numpy. 
 
-- Sample data from my favorite Pandas tutorial: [10 minutes to Pandas](https://pandas.pydata.org/docs/user_guide/10min.html).
+- Quick Pandas tutorial: [10 minutes to Pandas](https://pandas.pydata.org/docs/user_guide/10min.html).
 
 
 ```
@@ -240,10 +238,8 @@ df = pd.DataFrame(data)
 
 - [Dash advanced callbacks tutorial](https://dash.plotly.com/advanced-callbacks)
 
-In certain cases, you don't want to update the callback output. Here's how:
 
-Using `PreventUpdate`   
-
+`PreventUpdate`  
 All outputs of this callback will not update `if n_clicks is None`:
 ```
 from dash.exceptions import PreventUpdate
@@ -257,18 +253,18 @@ def update_output(n_clicks):
 
  ---
 
-Using `dash.no_update`  
-
-Here, the first output is not updated and the second one, a graph,  is updated.
+ `dash.no_update`  
+First output is not updated and the second one, a graph,  is updated.
 
 ```
     return dash.no_update, figure
 ```
 
 ---
-Which input triggered a callback?  
 
-Using  `dash.callback_context`  
+
+`dash.callback_context`  
+Use to determine which input triggered the callback 
  
 ```
 @app.callback(Output('container', 'children'),
@@ -284,21 +280,40 @@ def display(btn1, btn2):
 
 ```
 
+---
+This callback will not fire on initial load:
+```
+@app.callback(Output('container', 'children'),
+               Input('btn-1', 'n_clicks'),
+               Input('btn-2', 'n_clicks'),
+               prevent_initial_call=True
+) 
+             
+```
+
+None of the callbacks will fire on initial load:
+```
+app = Dash(name=__name__,
+           prevent_initial_callbacks=True,
+           external_stylesheets=external_stylesheets,
+)
+```
+
+
+
+
+
 ## __Components:__
 
-Find out more by typing in your Python terminal:  help(dash_core_components.Checklist) or any other component name.
+Find out more by typing in your Python terminal:  `help(dash_core_components.Checklist)` or any other component name.
 Here are a few popular components with some sample prop settings:
 
 ### dcc.Checklist
 see also dcc.RadioItems
 ```
 dcc.Checklist(
-    options=[
-        {'label': 'New York City', 'value': 'NYC'},
-        {'label': 'Montréal', 'value': 'MTL'},
-        {'label': 'San Francisco', 'value': 'SF'}
-    ],
-    value=['NYC', 'MTL'],
+    options = [{'label': i, 'value': i } for i in ['Q1', 'Q2', 'Q3', 'Q4']],    
+    value=['Q1', 'Q2'],
     labelStyle={'display': 'inline-block'}
 ) 
 ```
@@ -340,13 +355,12 @@ dcc.Slider(
 
 ```dcc.Input(id="input2", type="text", placeholder="", debounce=True),```
 
-note: allowed types = (
-    "text", "number", "password", "email", "search",
-    "tel", "url", "range", "hidden",
+note: allowed types = (`"text", "number", "password", "email", "search",
+    "tel", "url", "range", "hidden",`
 )
 
 ### html.Button
-``` html.Button('Button 1', id='btn-nclicks-1', n_clicks=0),```
+``` html.Button('Button 1', id='btn-1', n_clicks=0),```
 
 ### dcc.DatePickerRange
 see also DatePickerSinge
