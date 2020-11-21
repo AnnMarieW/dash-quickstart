@@ -23,6 +23,14 @@
 
 - How to: [move the toggle columns button](https://community.plotly.com/t/datatable-toggle-columns-button-placement-in-python/46768/2)
 
+### __Multi-page apps__
+
+ - How to: turn 2 single page apps into a multi-page app. We start with [this app](https://dash.plotly.com/interactive-graphing) 
+ and [this app](https://dash.plotly.com/basic-callbacks) from the Dash Tutorial.  See it as a multi-page app in [this directory]().
+ This is done following the [Structuring a Multi-Page App](https://dash.plotly.com/urls) example.
+
+
+
 ### __It's Live!__
 - How to: [deploy your app on Heroku](https://community.plotly.com/t/deploying-your-dash-app-to-heroku-the-magical-guide/46723)
 

@@ -1,0 +1,8 @@
+/* example css.  try adding html.H1('My css test') to app1 to see how it works*/
+
+body {
+    font-family: sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: hotpink
+}
