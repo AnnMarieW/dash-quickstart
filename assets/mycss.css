@@ -1,0 +1,35 @@
+
+.dash-table-container .row {
+  display: block;
+  margin: 0;
+}
+
+
+
+.tabulator-row .tabulator-cell {
+    padding:0;   
+}
+
+
+.my-margin {
+   
+   background-color: rgb(255,0,0);
+
+}
+/*
+.export{
+    position: absolute;
+    right: 50%;
+    font-type: sans-serif;
+    [...]
+}
+
+.show-hide{
+    position: absolute;
+    right: 50%;
+    font-type: sans-serif;
+    [...]
+}
+*/
+
+{selector:.export,rule:position:absolute;left:-15px;bottom:-30px}

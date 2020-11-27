@@ -13,9 +13,6 @@
  - A collection of demo apps that can be used for inspiration or as templates
 
    
- __[Error Messages](https://github.com/AnnMarieW/dash-quickstart/tree/master/error-messages)__
-   - Dash error messages can be confusing. This section will  explain some of the common errors and how to fix them.
- 
  __[Where to find more help](https://github.com/AnnMarieW/dash-quickstart/tree/master/where-to-find-help)__
    - Links to other resources, tutorials and articles
    

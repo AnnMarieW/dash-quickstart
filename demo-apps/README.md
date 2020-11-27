@@ -20,7 +20,7 @@
 
 ---
 
-- [Dash with real time data](stackoverflow.com/questions/63589249/plotly-dash-display-real-time-data-in-smooth-animation/63681810#63681810)
+- [Dash with real time data](https://stackoverflow.com/questions/63589249/plotly-dash-display-real-time-data-in-smooth-animation)
 
 ![](./images/real-time-data.gif)
 

@@ -73,3 +73,8 @@ This becomes even more important as the size of you app grows. See example [here
   
 - To see all of the properties available for a component,  type this in your Python console:
 ``` help(dash_core_components.Slider)```   or any other component name
+
+- Use a code formatter like [Black](https://black.readthedocs.io/en/stable/).  This will not only make your code PEP 8 
+compliant, but it also helps you code faster.  No need to spend a lot of time focusing things like 
+spacing and alignment --  Black can do that for you in a sec!
+It also makes your code easier to read and to debug, and makes you look like Python Pro.
