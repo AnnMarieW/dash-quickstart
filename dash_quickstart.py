@@ -217,7 +217,6 @@ layout
 
 app.layout = dbc.Container(
     [
-        html.H1('test'),
         dbc.Jumbotron(
             [
                 html.H1("Dash Quickstart", className="text-white"),
