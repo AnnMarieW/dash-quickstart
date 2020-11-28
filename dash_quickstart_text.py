@@ -120,7 +120,7 @@ callback_intro = """
 """
 
 
-callback_code = """``` 
+callback_code1 = """``` 
     import dash
     from dash.dependencies import Input, Output
     import dash_html_components as html
@@ -150,6 +150,54 @@ callback_code = """```
         app.run_server(debug=True)
 
 ```"""
+
+callback_code = """``` 
+    import dash
+    import dash_table
+    import pandas as pd
+    import dash_core_components as dcc
+    import dash_html_components as html
+    from dash.dependencies import Input, Output
+    
+    df = pd.read_csv(
+        "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
+    )
+    
+    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+    
+    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    
+    app.layout = html.Div(
+        [
+            dcc.Dropdown(
+                id="dropdown",
+                options=[{"label": i, "value": i} for i in df["country"].unique()],
+                multi=True,
+                value=[],
+            ),
+            dash_table.DataTable(
+                id="table",
+                columns=[{"name": i, "id": i} for i in df.columns],
+                data=df.to_dict("records"),
+            ),
+        ]
+    )
+    
+    
+    @app.callback(
+        Output("table", "data"), Input("dropdown", "value"),
+    )
+    def update_table(country_dd):
+        dff = df.copy() if country_dd == [] else df[df["country"].isin(country_dd)]
+        return dff.to_dict("records")
+    
+    
+    if __name__ == "__main__":
+        app.run_server(debug=True)
+```"""
+
+
+
 
 pattern_match_intro = """
     #### __Pattern Matching Callbacks Quickstart__
