@@ -11,7 +11,7 @@ tips_text = """
     and alignment - -  Black can do that for you in a sec!  It also makes  your code easier to read and to debug.
     
     - When you have mulitple inputs and outputs, the callbacks can get quite long.  A [best practice](https://github.com/plotly/dash/issues/1054) 
-    is to break the callbacks into smaller functions so that a multiple-input callback acts like a router.  (todo AMW - create and link to an example)
+    is to break the callbacks into smaller functions so that a multiple-input callback acts like a router. 
 
     - As you add more features and pages to your app, it can grow to be hundreds( or thousands!) of lines of code.  It then
     becomes even more important to organize your code so it is easier to maintain and debug. One method is to use a
@@ -36,9 +36,7 @@ debugging_text = """
     use strategically placed `print` statements(very helpful in callbacks). You can also use `print(fig)` to 
     see how a Plotly figure is defined. 
 
-    -[Here is a great post](https://community.plotly.com/t/solved-dash-layout-not-working-as-expected-general-debugging-tips/4724/4?u=annmariew)
- on the forum about debugging by Chris Parmer, the creator of Dash.  This is from 2017, so some of the information is dated. 
- For example the [Dev tools](https://dash.plotly.com/devtools) have many new features now.  Still, the post has lots of
- helpful debugging tips that still apply.
+    - Here is a [great post](https://community.plotly.com/t/solved-dash-layout-not-working-as-expected-general-debugging-tips/4724/4?u=annmariew)
+ on the forum about debugging by @chirddyp.  This is from 2017, so be sure to check out the upgrades to the Dev tools [here](https://dash.plotly.com/devtools) 
  
 """

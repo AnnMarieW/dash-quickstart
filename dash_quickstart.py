@@ -93,14 +93,16 @@ def make_image_row(id, howto_text, howto_image):
     )
     row = html.Tr(
         [
-            html.Td(dcc.Markdown(howto_text)),
+            html.Td(
+                html.Div(dcc.Markdown(howto_text),style={"maxHeight": 250, "minWidth": 400, "overflow": "auto"}),
+            ),
             html.Td(
                 [
                     "click on image to enlarge",
                     html.Div(
                         html.Img(id={'type': "row_modal", 'index':id},
-                                 src=howto_image),
-                        style={"maxHeight": 250, "maxWidth": 500, "overflow": "auto"},
+                                 src=howto_image, width=500),
+                        style={"maxHeight": 250, "overflow": "auto"},
                     ),
                 ]
             ),
@@ -129,6 +131,18 @@ def make_md_row(howto_text, example_text):
         ]
     )
 
+def make_dbc_row(title, table_name):
+    return dbc.Row(
+        dbc.Col(
+            [
+                html.H5(title),
+                table_name,
+            ],
+            className="my-4",
+        ),
+    )
+
+
 """
 ===============================================================================
 Build the tables  -- add new content here
@@ -141,13 +155,57 @@ howto_datatables= dbc.Table(
     +
     [html.Tbody(
         [
-            make_image_row("row1", howto.datatable_format_numbers, howto.datatable_format_numbers_image),
+            make_image_row("dt_format", howto.datatable_format_numbers, howto.datatable_format_numbers_image),
             make_md_row(howto.datatable_move_export_button, howto.datatable_move_export_button_code),
-            make_md_row(howto.datatable_conditional_formatting, "")
+            make_md_row(howto.datatable_conditional_formatting, ""),
+            make_md_row(howto.datatable_conditional_formatting2, howto.datatable_conditional_formatting2_code),
+            make_md_row(howto.datatable_fix_cut_off, ""),
         ]
     )],
     bordered=True
 )
+
+howto_bootstrap= dbc.Table(
+    table_header
+    +
+    [html.Tbody(
+        [
+            make_image_row("dbc_stages", howto.bootstrap_live_stages, howto.bootstrap_live_stages_image),
+            make_md_row(howto.bootstrap_modal, ""),
+        ]
+    )],
+    bordered=True
+)
+
+
+howto_deployment= dbc.Table(
+    table_header
+    +
+    [html.Tbody(
+        [
+            make_md_row( howto.deployment_heroku,""),
+            make_md_row(howto.deployment_pythonanywhere, ""),
+        ]
+    )],
+    bordered=True
+)
+
+
+howto_general= dbc.Table(
+    table_header
+    +
+    [html.Tbody(
+        [
+            make_image_row('pattern_match', howto.gen_pattern_matching, howto.gen_pattern_matching_image),
+            make_image_row("tabulator", howto.gen_tabulator, howto.gen_tabulator_image),
+            make_image_row("bubble",howto.gen_image_in_bubble, howto.gen_image_in_bubble_image),
+            make_image_row("real_time",howto.gen_real_time_data, howto.gen_real_time_data_image),
+
+        ]
+    )],
+    bordered=True
+)
+
 
 
 
@@ -246,19 +304,13 @@ quickstart_tab = (
 Build How To Tab - determines order of the tables in the tab
 
 """
-howto_tab = (
-    dbc.Row(
-        dbc.Col(
-            [
-                html.H5("DataTables"),
-                howto_datatables,
+howto_tab = [
+    make_dbc_row("DataTables", howto_datatables),
+    make_dbc_row("Bootstrap", howto_bootstrap),
+    make_dbc_row("General", howto_general),
+    make_dbc_row("Deployment", howto_deployment),
 
-            ],
-            className="my-4",
-        ),
-    ),
-)
-
+]
 """
 ================================================================================
 tips tabs - content
