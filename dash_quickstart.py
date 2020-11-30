@@ -1,11 +1,27 @@
+"""
+This app is a quickstart guide for Plotly Dash app
+
+hosted at: https://dashquickstart.pythonanywhere.com/
+(amw .com finxter)
+
+This is the main app.  Content for each tab is in the files:  text_*.py
+To update the quickstart app....
+  etc - tbd
+
+"""
+
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output, State, ClientsideFunction
-import plotly.express as px
-import pandas as pd
+from dash.dependencies import Input, Output, State, ClientsideFunction, MATCH
 import dash_bootstrap_components as dbc
-import dash_quickstart_text as tx
+
+# app content
+import text_quickstart as qstart
+import text_more as more
+import text_tips as tips
+import text_howto as howto
 
 
 FONT_AWESOME = (
@@ -17,11 +33,19 @@ app = dash.Dash(external_stylesheets=[FONT_AWESOME, dbc.themes.SPACELAB,])
 
 """
 ===============================================================================
-Make accordion
+Make code box
 """
 
 
 def make_code_box(title, id_btn, id_md, intro, code):
+    """
+    :param title: text to show when twistie box is closed
+    :param id_btn: id of the copy button
+    :param id_md: id of the content to copy to clipboard
+    :param intro: markdown content that does not get copied with button click
+    :param code: content to copy to the clipboard - typically a code block
+    :return: a div with a twistie box
+    """
     return html.Div(
         [
             html.Details(
@@ -48,7 +72,88 @@ def make_code_box(title, id_btn, id_md, intro, code):
 
 """
 ===============================================================================
-Tab content
+Tables for Howto Tab  - functions to create the rows
+"""
+
+def make_image_row(id, howto_text, howto_image):
+    """
+    :param id: str id for the modal
+    :param howto_text: text for the first column
+    :param howto_image:  image for the second column
+    :return: row for the table with a modal to enlarge the image when clicked on
+    """
+
+    row_modal = html.Div(
+        dbc.Modal(
+            dbc.ModalBody(html.Img(src=howto_image)),
+            id={'type': "modal", 'index':id},
+            scrollable=True,
+            size="xl",
+        ),
+    )
+    row = html.Tr(
+        [
+            html.Td(dcc.Markdown(howto_text)),
+            html.Td(
+                [
+                    "click on image to enlarge",
+                    html.Div(
+                        html.Img(id={'type': "row_modal", 'index':id},
+                                 src=howto_image),
+                        style={"maxHeight": 250, "maxWidth": 500, "overflow": "auto"},
+                    ),
+                ]
+            ),
+            row_modal,
+        ],
+    )
+    return row
+
+def make_md_row(howto_text, example_text):
+    """
+
+    :param howto_text: text for the first column
+    :param example_text: text for the second column
+    :return: row for the table
+    """
+    return html.Tr(
+        [
+            html.Td(dcc.Markdown(howto_text)),
+            html.Td(
+                html.Div(
+                    dcc.Markdown(example_text),
+                    style={"maxHeight": 250, "maxWidth": 500, "overflow": "auto"},
+                )
+
+            ),
+        ]
+    )
+
+"""
+===============================================================================
+Build the tables  -- add new content here
+"""
+
+table_header = [html.Thead(html.Tr([html.Th("How To"), html.Th("Example")]))]
+
+howto_datatables= dbc.Table(
+    table_header
+    +
+    [html.Tbody(
+        [
+            make_image_row("row1", howto.datatable_format_numbers, howto.datatable_format_numbers_image),
+            make_md_row(howto.datatable_move_export_button, howto.datatable_move_export_button_code),
+            make_md_row(howto.datatable_conditional_formatting, "")
+        ]
+    )],
+    bordered=True
+)
+
+
+
+"""
+===============================================================================
+Quickstart Tab content
 """
 quickstart_tab = (
     dbc.Row(
@@ -62,86 +167,68 @@ quickstart_tab = (
                                 "Click on a section to see helpful links and code:",
                                 className="mb-2",
                             ),
-                            html.Div(
-                                make_code_box(
-                                    "Dash Hello World ",
-                                    "copy_quickstart",
-                                    "md_quickstart",
-                                    tx.hello_world_intro,
-                                    tx.hello_world_code,
-                                )
+                            make_code_box(
+                                "Dash Hello World ",
+                                "copy_quickstart",
+                                "md_quickstart",
+                                qstart.hello_world_intro,
+                                qstart.hello_world_code,
                             ),
-                            html.Div(
-                                make_code_box(
-                                    "Dash DataTable ",
-                                    "copy_DataTable",
-                                    "md_DataTable",
-                                    tx.datatable_intro,
-                                    tx.datatable_code,
-                                )
+                            make_code_box(
+                                "Dash DataTable ",
+                                "copy_DataTable",
+                                "md_DataTable",
+                                qstart.datatable_intro,
+                                qstart.datatable_code,
                             ),
-                            html.Div(
-                                make_code_box(
-                                    "dash-bootstrap",
-                                    "copy_bootstrap",
-                                    "md_bootstrap",
-                                    tx.bootstrap_intro,
-                                    tx.bootstrap_code,
-                                )
+                            make_code_box(
+                                "dash-bootstrap",
+                                "copy_bootstrap",
+                                "md_bootstrap",
+                                qstart.bootstrap_intro,
+                                qstart.bootstrap_code,
                             ),
-                            html.Div(
-                                make_code_box(
-                                    "dash-leaflet ",
-                                    "copy_leaflet",
-                                    "md_leaflet",
-                                    tx.leaflet_intro,
-                                    tx.leaflet_code,
-                                )
+                            make_code_box(
+                                "dash-leaflet ",
+                                "copy_leaflet",
+                                "md_leaflet",
+                                qstart.leaflet_intro,
+                                qstart.leaflet_code,
                             ),
-                            html.Div(
-                                make_code_box(
-                                    "Callbacks ",
-                                    "copy_callback",
-                                    "md_callback",
-                                    tx.callback_intro,
-                                    tx.callback_code,
-                                )
+                            make_code_box(
+                                "Callbacks ",
+                                "copy_callback",
+                                "md_callback",
+                                qstart.callback_intro,
+                                qstart.callback_code,
                             ),
-                            html.Div(
-                                make_code_box(
-                                    "Callback extras ",
-                                    "copy_callback_extras",
-                                    "md_callback_extras",
-                                    tx.callback_extras_intro,
-                                    "",
-                                )
+                            make_code_box(
+                                "Callback extras ",
+                                "copy_callback_extras",
+                                "md_callback_extras",
+                                qstart.callback_extras_intro,
+                                "",
                             ),
-                            html.Div(
-                                make_code_box(
-                                    "Pattern Matching Callbacks",
-                                    "copy_pattern_match",
-                                    "md_pattern_match",
-                                    tx.pattern_match_intro,
-                                    tx.pattern_match_code,
-                                )
+                            make_code_box(
+                                "Pattern Matching Callbacks",
+                                "copy_pattern_match",
+                                "md_pattern_match",
+                                qstart.pattern_match_intro,
+                                qstart.pattern_match_code,
                             ),
-                            html.Div(
-                                make_code_box(
-                                    "Datasets ",
-                                    "copy_datasets",
-                                    "md_datasets",
-                                    tx.datasets_intro,
-                                    tx.datasets_code,
-                                )
+                            make_code_box(
+                                "Datasets ",
+                                "copy_datasets",
+                                "md_datasets",
+                                qstart.datasets_intro,
+                                qstart.datasets_code,
                             ),
-                            html.Div(
-                                make_code_box(
-                                    "Dash Components",
-                                    "copy_components",
-                                    "md_components",
-                                    tx.components_intro,
-                                    "",
-                                ),
+                            make_code_box(
+                                "Dash Components",
+                                "copy_components",
+                                "md_components",
+                                qstart.components_intro,
+                                "",
                             ),
                         ]
                     ),
@@ -153,13 +240,38 @@ quickstart_tab = (
     ),
 )
 
+
+"""
+================================================================================
+Build How To Tab - determines order of the tables in the tab
+
+"""
+howto_tab = (
+    dbc.Row(
+        dbc.Col(
+            [
+                html.H5("DataTables"),
+                howto_datatables,
+
+            ],
+            className="my-4",
+        ),
+    ),
+)
+
+"""
+================================================================================
+tips tabs - content
+
+"""
+
 tips_tab = [
     dbc.Row(
         dbc.Col(
             dbc.Card(
                 [
                     dbc.CardHeader(html.H4("Tips & Tricks")),
-                    dbc.CardBody([dcc.Markdown(tx.tips_text),]),
+                    dbc.CardBody([dcc.Markdown(tips.tips_text),]),
                 ]
             ),
             width=8,
@@ -171,7 +283,7 @@ tips_tab = [
             dbc.Card(
                 [
                     dbc.CardHeader(html.H4("Debugging")),
-                    dbc.CardBody([dcc.Markdown(tx.debugging_text),]),
+                    dbc.CardBody([dcc.Markdown(tips.debugging_text),]),
                 ]
             ),
             width=8,
@@ -181,19 +293,13 @@ tips_tab = [
 ]
 
 
-howto_tab = (
-    dbc.Row(
-        dbc.Col(
-            dbc.Card(
-                [
-                    dbc.CardHeader(html.H4("How To Guide")),
-                    dbc.CardBody([dcc.Markdown(tx.howto_text),]),
-                ]
-            ),
-            className="m-4",
-        )
-    ),
-)
+"""
+================================================================================
+More tab - content
+
+"""
+
+
 
 more_tab = (
     dbc.Row(
@@ -201,7 +307,7 @@ more_tab = (
             dbc.Card(
                 [
                     dbc.CardHeader(html.H4("Where to find more help:")),
-                    dbc.CardBody([dcc.Markdown(tx.more_text),]),
+                    dbc.CardBody([dcc.Markdown(more.more_text),]),
                 ]
             ),
             className="m-4",
@@ -245,6 +351,8 @@ app.layout = dbc.Container(
 Callbacks
 """
 
+# This adds the copy to clipboard functionality to code blocks.  Just add the ID of the
+#  code block to this list
 quickstart_codebocks = [
     "quickstart",
     "DataTable",
@@ -263,6 +371,19 @@ quickstart_codebocks = [
     )
     for i in quickstart_codebocks
 ]
+
+
+
+@app.callback(
+    Output({'type': "modal", "index": MATCH}, "is_open"),
+    Input({'type': "row_modal", "index": MATCH}, "n_clicks")
+)
+def open_row_modal(n):
+    """ opens a model in the how-to tables"""
+    return True if n else False
+
+
+
 
 
 if __name__ == "__main__":
