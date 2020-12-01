@@ -7,7 +7,7 @@ Quickstart apps
 
 hello_world_intro = """        
     #### __Dash Hello World__    
-    - [Dash Tutorial](https://dash.plotly.com/installation)
+    - Start the [Dash Tutorial](https://dash.plotly.com/installation)
 """
 
 hello_world_code = """```
@@ -67,8 +67,8 @@ datatable_code = """```
 
 bootstrap_intro = """
     ### __dash-bootstrap Quickstart__
-    - [dash-bootstrap documentation](https://dash-bootstrap-components.opensource.faculty.ai/docs/quickstart/)
-    - [bootstrap classname cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)
+    - See the dash-bootstrap [tutorial and documentation](https://dash-bootstrap-components.opensource.faculty.ai/docs/quickstart/)
+    - The best Bootstrap className [cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)
 """
 
 bootstrap_code = """``` 
@@ -89,7 +89,7 @@ bootstrap_code = """```
 
 leaflet_intro = """
     #### __dash-leaflet  Quickstart__
-    - [dash-leaflet documentation](https://dash-leaflet.herokuapp.com/)
+    - See the [dash-leaflet documentation](https://dash-leaflet.herokuapp.com/) for more examples
 """
 
 
@@ -107,11 +107,11 @@ leaflet_code = """```
 
 callback_intro = """
     #### __Callbacks Quickstart__
-    - [Dash callbacks tutorial](https://dash.plotly.com/basic-callbacks)
+    - See the [Dash callbacks tutorial](https://dash.plotly.com/basic-callbacks)
 """
 
 
-callback_code1 = """``` 
+callback_code = """``` 
     import dash
     from dash.dependencies import Input, Output
     import dash_html_components as html
@@ -142,7 +142,7 @@ callback_code1 = """```
 
 ```"""
 
-callback_code = """``` 
+callback_code1 = """``` 
     import dash
     import dash_table
     import pandas as pd
@@ -192,7 +192,7 @@ callback_code = """```
 
 pattern_match_intro = """
     #### __Pattern Matching Callbacks Quickstart__
-    - [Dash pattern matching callback tutorial](https://dash.plotly.com/pattern-matching-callbacks)
+    - See the [Dash pattern matching callback tutorial](https://dash.plotly.com/pattern-matching-callbacks)
 """
 
 
@@ -242,21 +242,24 @@ pattern_match_code = """```
 
 
 datasets_intro = """
-    #### __Datasets: Ploty datasets and generic Pandas dataframes Quickstart__
+    ##### __Datasets: Ploty datasets and generic Pandas dataframes Quickstart__
     - Quick Pandas tutorial: [10 minutes to Pandas](https://pandas.pydata.org/docs/user_guide/10min.html).
 """
 
-datasets_code = """``` 
+datasets_code = """
 
-    '''
+```
     import pandas as pd
     import numpy as np
     df = pd.DataFrame(np.random.randn(6, 4), columns=list('ABCD'))
-    ```
+```
     
-    - Datasets frequently used in the Dash and Plotly tutorials:
-    ```
+- Datasets frequently used in the Dash and Plotly tutorials:  
+
+
+```
     import plotly.express as px
+    
     df = px.data.gapminder()
     df = px.data.iris()
     df = px.data.tips()
@@ -274,42 +277,62 @@ datasets_code = """```
         ]
     )
     df = pd.DataFrame(data)
-```"""
+"""
 
 
 callback_extras_intro = """
-    #### __Callback Extras __
-    -  [Dash advanced callbacks tutorial](https://dash.plotly.com/advanced-callbacks)
+#### __Dash Callback Extras Cheatsheet__    
+- See: [Dash advanced callbacks tutorial](https://dash.plotly.com/advanced-callbacks)  
 
-    
-    `PreventUpdate`
-    All outputs of this callback will not update `if n_clicks is None`:
-    ```
-    from dash.exceptions import PreventUpdate
-    
-    # code snippet from a dash callback:
-    
+|What to use||When to use it |  
+| :----|:----| :----|  
+|```  PreventUpdate ```| |Prevents _all_ outputs of a callback from updating| 
+|`dash.no_update`|| Prevents _certain_ outputs of a callback from updating|
+|`prevent_initial_call=True`|| Prevents initial call of a  _certain_ callback|
+|`prevent_initial_callbacks=True` || Prevents _all_ initial calls|
+| `dash.callback_context`|| Determine which Input triggered a callback|
+
+
+---
+#### Code snippets:
+
+```  PreventUpdate ```
+```
+    from dash.exceptions import PreventUpdate    
+    ...   
     def update_output(n_clicks):
         if n_clicks is None:
             raise PreventUpdate
-    ```
-    
-     ---
-    
-     `dash.no_update`
-    First output is not updated and the second one, a graph,  is updated.
-    
-    ```
+```
+
+---
+`dash.no_update`    
+```
+        # first  Output not updated
         return dash.no_update, figure
-    ```
+```
+ 
     
-    ---
+---
+`prevent_initial_call=True`
+```
+    @app.callback(Output('container', 'children'),
+                   Input('btn-1', 'n_clicks'),
+                   Input('btn-2', 'n_clicks'),
+                   prevent_initial_call=True
+    )
+```
+---
+`prevent_initial_callbacks=True`
+```
+    app = Dash(name=__name__, prevent_initial_callbacks=True)
+```
     
-    
-    `dash.callback_context`
-    Use to determine which input triggered the callback
-    
-    ```
+   
+---
+
+`dash.callback_context`    
+```
     @app.callback(Output('container', 'children'),
                    Input('btn-1', 'n_clicks'),
                    Input('btn-2', 'n_clicks'))
@@ -319,25 +342,12 @@ callback_extras_intro = """
     
         if input_id == 'btn-1':
             # do something...
+```
+
     
     
-    ```
     
-    ---
-    This callback will not fire on initial load:
-    ```
-    @app.callback(Output('container', 'children'),
-                   Input('btn-1', 'n_clicks'),
-                   Input('btn-2', 'n_clicks'),
-                   prevent_initial_call=True
-    )
-    
-    ```
-    
-    None of the callbacks will fire on initial load:
-    ```
-    app = Dash(name=__name__, prevent_initial_callbacks=True)
-    ```
+ 
 """
 
 

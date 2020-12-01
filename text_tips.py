@@ -40,3 +40,24 @@ debugging_text = """
  on the forum about debugging by @chirddyp.  This is from 2017, so be sure to check out the upgrades to the Dev tools [here](https://dash.plotly.com/devtools) 
  
 """
+
+"""
+Notes for more debugging text:
+    When callbacks don't fire:
+        put a print stmt inside to verify
+        check no blank line between callback decorator and function
+        double, triple check spelling, dashes vs underscores,  capital vs lower case for the component ids
+        make sure that the number of input variables matches the number of inputs in decorator - including n_intervals
+        
+    When figures don't show up:
+        check that there is data sent - sometimes the user selected filter, filters ALL the data
+        
+    When datatables are blank
+        check that id and name are not reversed
+        column names cannot be integer (verify?)
+        check that data is returned in the right format.  Can't be a df
+        
+        
+
+
+"""

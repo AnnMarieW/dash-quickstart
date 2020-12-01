@@ -55,9 +55,10 @@ datatable_conditional_formatting="""
     like the one used in the [Conditional Formatting](https://dash.plotly.com/datatable/conditional-formatting) 
     example from the Dash Tutorial   
   """
+
+image="- ![conditional_format](https://user-images.githubusercontent.com/72614349/100655403-7758df00-3308-11eb-9d6e-079d3114b5eb.png)"
 datatable_conditional_formatting2="""
-    - Setting background color for column values from a dictionary
-    - ![conditional_format](https://user-images.githubusercontent.com/72614349/100655403-7758df00-3308-11eb-9d6e-079d3114b5eb.png)
+    - Conditional formatting:  Setting background color for column values from a dictionary    
     """
 datatable_conditional_formatting2_code="""```
     import dash
@@ -182,6 +183,11 @@ gen_pattern_matching_image="""
 
 gen_tabulator="""
     [Dash Tabulator component example](https://community.plotly.com/t/tabulator-dash-component/42261/21?u=annmariew)
+    Some nice Tabulator features: 
+    
+        - case insensitive filters
+        - calculations like sums and averages on columns
+        - group by       
     
     """
 gen_tabulator_image="""

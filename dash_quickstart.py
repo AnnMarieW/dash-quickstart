@@ -61,7 +61,7 @@ def make_code_box(title, id_btn, id_md, intro, code):
                             ),
                         ]
                     ),
-                    dcc.Markdown(intro),
+                    dcc.Markdown(children=intro),
                     dcc.Markdown(id=id_md, children=code),
                 ],
                 style={"borderStyle": "solid", "borderWidth": 1,},
@@ -94,15 +94,15 @@ def make_image_row(id, howto_text, howto_image):
     row = html.Tr(
         [
             html.Td(
-                html.Div(dcc.Markdown(howto_text),style={"maxHeight": 250, "minWidth": 400, "overflow": "auto"}),
+                html.Div(dcc.Markdown(howto_text),style={"maxHeight": 300, "width": 300, "overflow": "auto"}),
             ),
             html.Td(
                 [
                     "click on image to enlarge",
                     html.Div(
                         html.Img(id={'type': "row_modal", 'index':id},
-                                 src=howto_image, width=500),
-                        style={"maxHeight": 250, "overflow": "auto"},
+                                 src=howto_image, width=800),
+                        style={"maxHeight": 300, "maxWidth": 800, "overflow": "auto"},
                     ),
                 ]
             ),
@@ -120,11 +120,11 @@ def make_md_row(howto_text, example_text):
     """
     return html.Tr(
         [
-            html.Td(dcc.Markdown(howto_text)),
+            html.Td(html.Div(dcc.Markdown(howto_text)),style={"maxHeight": 300, "width": 300, "overflow": "auto"}),
             html.Td(
                 html.Div(
                     dcc.Markdown(example_text),
-                    style={"maxHeight": 250, "maxWidth": 500, "overflow": "auto"},
+                    style={"maxHeight": 300, "overflow": "auto"},
                 )
 
             ),
@@ -213,6 +213,15 @@ howto_general= dbc.Table(
 ===============================================================================
 Quickstart Tab content
 """
+
+test = """
+| City       | Value     | Return     |
+| :------------- | :----------: | -----------: |
+|  Montreal   | 41,531    | 431.245 |
+| Seattle   | 53,153 | 12.431 |
+
+        """
+
 quickstart_tab = (
     dbc.Row(
         dbc.Col(
