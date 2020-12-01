@@ -193,3 +193,10 @@ gen_tabulator="""
 gen_tabulator_image="""
     https://user-images.githubusercontent.com/72614349/100633820-c7757880-32eb-11eb-916d-3b395edfa8a5.gif
     """
+
+gen_copy_to_clipboard="""
+    Here is how to [copy text to a clipboard](https://github.com/AnnMarieW/dash-quickstart/blob/master/demo_apps/copy_to_clipboard.py)
+     on a button click - like on the Quickstart page of this app
+
+
+"""

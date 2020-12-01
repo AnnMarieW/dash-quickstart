@@ -7,10 +7,10 @@ window.dash_clientside = Object.assign({}, window.dash_clientside, {
             return;
           }
           if (n > 0) {
-            // removes code block markdown syntax ```
+            // removes code block markdown syntax  ```
             const trimmed_text = text.replace(/(^```)|(```$)/g, '');
             navigator.clipboard.writeText(trimmed_text).then(function() {
-                alert("Copied.  crl-V to paste")
+                alert("Copied.  crl-v to paste")
               }, function() {
                 alert('copy error')
               });

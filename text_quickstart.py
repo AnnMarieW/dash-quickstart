@@ -358,5 +358,11 @@ components_intro = """
      by typing in your Python terminal:  `help(dash_core_components.Checklist)` or any other component name. 
      
      - [Dash HTML Components list](https://dash.plotly.com/dash-html-components)
+     
+     - Plotly [Figure Reference](https://plotly.com/python/reference/index/) pages
+     
+     - Plotly [Figure Structure](https://plotly.com/python/figure-structure/) tutorial
+     
+     - Overview of [Plotly Express](https://plotly.com/python/plotly-express/)
 
 """

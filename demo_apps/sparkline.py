@@ -1,38 +1,137 @@
+import dash
+import dash_table
+import pandas as pd
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output
+from dash_table.Format import Format, Scheme, Group
+from dash.exceptions import PreventUpdate
 
-.dash-table-container .row {
-  display: block;
-  margin: 0;
-}
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv")
+
+external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 
+formatted = Format().scheme(Scheme.fixed).precision(0).group(Group.yes)
+spark_options = [
+    "Sparks-Bar-Medium",
+    "Sparks-Bar-Wide",
+    "Sparks-Dot-Medium",
+    "Sparks-Dot-Large",
+    "Sparks-Dot-Extralarge",
+    "Sparks-Dotline-Extrathin",
+    "Sparks-Dotline-Thin",
+    "Sparks-Dotline-Medium",
+    "Sparks-Dotline-Thick",
+    "Sparks-Dotline-Extrathick",
+]
 
-.tabulator-row .tabulator-cell {
-    padding:0;   
-}
+
+app.layout = html.Div(
+    [
+        html.Div([
+        dcc.Dropdown(
+            id="spark_style",
+            options=[{"label": i, "value": i} for i in spark_options],
+            value="Sparks-Bar-Extrawide",
+            placeholder="Select sparkline style",
+            style={"width": 300},
+        ),
+        dcc.RadioItems(
+            id="stat_radio",
+            options=[{"label": i, "value": i} for i in ["pop", "lifeExp", "gdpPercap"]],
+            value="gdpPercap",
+            labelStyle={"display": "inline-block"},
+        ),
+
+        dcc.RangeSlider(
+            id="year_slider",
+            marks={i: str(i) for i in df["year"].unique().tolist()},
+            min=1952,
+            max=2007,
+            allowCross=False,
+            value=[1987, 2007],
+        )],style={'width':600, 'margin':20}),
+        dash_table.DataTable(
+            id="table",
+            filter_action="native",
+            sort_action="native",
+            style_data_conditional=[
+                {"if": {"column_id": "sparkline"}, "font-family": "Sparks-Bar-Wide",},
+            ],
+        ),
+    ]
+)
 
 
-.my-margin {
-   
-   background-color: rgb(255,0,0);
+def make_sparkline(df_wide):
+    """
 
-}
-/*
-.export{
-    position: absolute;
-    right: 50%;
-    font-type: sans-serif;
-    [...]
-}
+    :param df_wide: dataframe in a "wide" format with the sparkline periods as columns
+    :return: a column with the data formatted for the sparkline fonts example:  '453{10,40,30,80}690'
+    """
 
-.show-hide{
-    position: absolute;
-    right: 50%;
-    font-type: sans-serif;
-    [...]
-}
-*/
+    # normalize between 0 and 100  ( (x-x.min)/ (x.max-x.min)*100
+    max = df_wide.max(axis=1)
+    min = df_wide.min(axis=1)
+    df_spark = df_wide.sub(min, axis="index").div((max - min), axis="index") * 100
 
-{selector:.export,rule:position:absolute;left:-15px;bottom:-30px}
+    # format the normalized numbers like: '25,20,50,80'
+    df_spark["spark"] = df_spark.astype(int).astype(str).agg(",".join, axis=1)
+
+    # get the starting and ending numbers
+    df_spark["start"] = df_wide[df_wide.columns[0]].astype(int).astype(str)
+    df_spark["end"] = df_wide[df_wide.columns[-1]].astype(int).astype(str)
+
+    # put it all together
+    df_spark["{"] = "{"
+    df_spark["}"] = "}"
+    df_spark["sparkline"] = df_spark[["start", "{", "spark", "}", "end"]].agg(
+        "".join, axis=1
+    )
+    return df_spark["sparkline"]
+
+
+@app.callback(
+    Output("table", "columns"),
+    Output("table", "data"),
+    Output("table", "style_data_conditional"),
+    Input("year_slider", "value"),
+    Input("stat_radio", "value"),
+    Input("spark_style", "value"),
+)
+def update_table(year, stat, spark_style):
+    if year[0] == year[1]:
+        raise PreventUpdate
+
+    dff = df[(df["year"] >= year[0]) & (df["year"] <= year[1])]
+    dff = dff.pivot(index=["country", "continent"], columns="year", values=stat)
+    dff["sparkline"] = make_sparkline(dff)
+    dff = dff.reset_index()
+
+    columns = [
+        {"name": str(i), "id": str(i), "format": formatted, "type": "numeric"}
+        for i in dff.columns
+    ]
+    data = dff.to_dict("records")
+
+    style = [
+        {"if": {"column_id": "sparkline"}, "font-family": spark_style,},
+    ]
+    return columns, data, style
+
+
+if __name__ == "__main__":
+    app.run_server(debug=True)
+
+
+'''
+===============================================================================
+Move the following css to the assets folder in your root directory.  
+This is what turns the '453{10,40,30,80}690' into a sparkline
+===============================================================================
 
 
 @font-face {
@@ -256,3 +355,6 @@
 .dotline-extrathick {
   font-family: Sparks-Dotline-Extrathick;
 }
+
+
+'''

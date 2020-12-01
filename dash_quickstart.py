@@ -200,6 +200,7 @@ howto_general= dbc.Table(
             make_image_row("tabulator", howto.gen_tabulator, howto.gen_tabulator_image),
             make_image_row("bubble",howto.gen_image_in_bubble, howto.gen_image_in_bubble_image),
             make_image_row("real_time",howto.gen_real_time_data, howto.gen_real_time_data_image),
+            make_md_row(howto.gen_copy_to_clipboard, "")
 
         ]
     )],
@@ -291,7 +292,7 @@ quickstart_tab = (
                                 qstart.datasets_code,
                             ),
                             make_code_box(
-                                "Dash Components",
+                                "Dash Components and Plotly Figure references",
                                 "copy_components",
                                 "md_components",
                                 qstart.components_intro,
