@@ -31,6 +31,8 @@ spark_options = [
 
 app.layout = html.Div(
     [
+        html.H2("Sparkline Demo App"),
+        html.Div("Fonts from https://github.com/aftertheflood/sparks"),
         html.Div([
         dcc.Dropdown(
             id="spark_style",
@@ -58,9 +60,6 @@ app.layout = html.Div(
             id="table",
             filter_action="native",
             sort_action="native",
-            style_data_conditional=[
-                {"if": {"column_id": "sparkline"}, "font-family": "Sparks-Bar-Wide",},
-            ],
         ),
     ]
 )
@@ -70,13 +69,19 @@ def make_sparkline(df_wide):
     """
 
     :param df_wide: dataframe in a "wide" format with the sparkline periods as columns
-    :return: a column with the data formatted for the sparkline fonts example:  '453{10,40,30,80}690'
+    :return: a series with the data formatted for the sparkline fonts.
+             Example:  '453{10,40,30,80}690'
     """
 
-    # normalize between 0 and 100  ( (x-x.min)/ (x.max-x.min)*100
+    # normalize between 0 and 100
     max = df_wide.max(axis=1)
     min = df_wide.min(axis=1)
-    df_spark = df_wide.sub(min, axis="index").div((max - min), axis="index") * 100
+
+    # if data is all positive numbers use: (x)/ (x.max)*100
+    df_spark = df_wide.div((max), axis="index").mul(100).round(decimals=0)
+
+    # Or use this formula if the data has negative numbers:  ( (x-x.min)/ (x.max-x.min)*100
+    #df_spark = df_wide.sub(min, axis="index").div((max - min).round(decimals=0), axis="index") * 100
 
     # format the normalized numbers like: '25,20,50,80'
     df_spark["spark"] = df_spark.astype(int).astype(str).agg(",".join, axis=1)
@@ -86,12 +91,9 @@ def make_sparkline(df_wide):
     df_spark["end"] = df_wide[df_wide.columns[-1]].astype(int).astype(str)
 
     # put it all together
-    df_spark["{"] = "{"
-    df_spark["}"] = "}"
-    df_spark["sparkline"] = df_spark[["start", "{", "spark", "}", "end"]].agg(
-        "".join, axis=1
-    )
-    return df_spark["sparkline"]
+    return df_spark["start"] + "{" + df_spark["spark"] + "}" + df_spark["end"]
+
+
 
 
 @app.callback(
@@ -130,7 +132,7 @@ if __name__ == "__main__":
 '''
 ===============================================================================
 Move the following css to the assets folder in your root directory.  
-This is what turns the '453{10,40,30,80}690' into a sparkline
+
 ===============================================================================
 
 

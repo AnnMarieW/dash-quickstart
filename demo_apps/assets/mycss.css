@@ -34,7 +34,7 @@
 
 {selector:.export,rule:position:absolute;left:-15px;bottom:-30px}
 
-
+/**
 @font-face {
   font-family: 'Sparks-Bar-Narrow';
   src: url('https://tools.aftertheflood.com/sparks/output/eot/Sparks-Bar-Narrow.eot');
@@ -83,7 +83,7 @@
   font-style: normal;
 }
 
-/* Dots */
+
 
 @font-face {
   font-family: 'Sparks-Dot-Extrasmall';
@@ -145,7 +145,7 @@
   font-style: normal;
 }
 
-/* Dot-lines */
+/* Dot-lines
 
 @font-face {
   font-family: 'Sparks-Dotline-Extrathin';
@@ -206,6 +206,32 @@
   font-weight: normal;
   font-style: normal;
 }
+*/
+
+
+@font-face {
+  font-family: 'Sparks-Bar-Wide';
+  src: url(Sparks-Bar-Wide.woff);
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Sparks-Bar-Extrawide';
+  src: url(Sparks-Bar-Extrawide.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Sparks-Dotline-Extrathick';
+  src: url(Sparks-Dotline-Extrathick.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 .sparks {
   font-variant-ligatures: normal;

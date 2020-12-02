@@ -5,9 +5,8 @@ Quickstart apps
 """
 
 
-hello_world_intro = """        
-    #### __Dash Hello World__    
-    - Start the [Dash Tutorial](https://dash.plotly.com/installation)
+hello_world_intro = """   
+Start the [Dash Tutorial](https://dash.plotly.com/installation)
 """
 
 hello_world_code = """```
@@ -40,9 +39,8 @@ if __name__ == '__main__':
 ```"""
 
 datatable_intro = """
-    #### __DataTable Quickstart__
-    - [Dash DataTable Tutorial](https://dash.plotly.com/datatable)  
-    - [Dash DataTable Reference](https://dash.plotly.com/datatable/reference) 
+ [-Dash DataTable Tutorial](https://dash.plotly.com/datatable)  
+ [-Dash DataTable Reference](https://dash.plotly.com/datatable/reference) 
 """
 
 datatable_code = """```                            
@@ -65,10 +63,10 @@ datatable_code = """```
 ```"""
 
 
-bootstrap_intro = """
-    ### __dash-bootstrap Quickstart__
-    - See the dash-bootstrap [tutorial and documentation](https://dash-bootstrap-components.opensource.faculty.ai/docs/quickstart/)
-    - The best Bootstrap className [cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)
+bootstrap_intro = """    
+[-dash-bootstrap documentation & tutorial](https://dash-bootstrap-components.opensource.faculty.ai/docs/quickstart/)  
+
+-[ Best Bootstrap cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)
 """
 
 bootstrap_code = """``` 
@@ -87,9 +85,8 @@ bootstrap_code = """```
         app.run_server(debug=True)
 ```"""
 
-leaflet_intro = """
-    #### __dash-leaflet  Quickstart__
-    - See the [dash-leaflet documentation](https://dash-leaflet.herokuapp.com/) for more examples
+leaflet_intro = """    
+[-dash-leaflet documentation](https://dash-leaflet.herokuapp.com/)
 """
 
 
@@ -106,8 +103,7 @@ leaflet_code = """```
 
 
 callback_intro = """
-    #### __Callbacks Quickstart__
-    - See the [Dash callbacks tutorial](https://dash.plotly.com/basic-callbacks)
+[Dash callbacks tutorial](https://dash.plotly.com/basic-callbacks)
 """
 
 
@@ -190,9 +186,8 @@ callback_code1 = """```
 
 
 
-pattern_match_intro = """
-    #### __Pattern Matching Callbacks Quickstart__
-    - See the [Dash pattern matching callback tutorial](https://dash.plotly.com/pattern-matching-callbacks)
+pattern_match_intro = """    
+[Dash pattern matching callback](https://dash.plotly.com/pattern-matching-callbacks)
 """
 
 
@@ -241,9 +236,8 @@ pattern_match_code = """```
 ```"""
 
 
-datasets_intro = """
-    ##### __Datasets: Ploty datasets and generic Pandas dataframes Quickstart__
-    - Quick Pandas tutorial: [10 minutes to Pandas](https://pandas.pydata.org/docs/user_guide/10min.html).
+datasets_intro = """    
+[10 minutes to Pandas](https://pandas.pydata.org/docs/user_guide/10min.html).
 """
 
 datasets_code = """
@@ -280,9 +274,11 @@ datasets_code = """
 """
 
 
-callback_extras_intro = """
-#### __Dash Callback Extras Cheatsheet__    
-- See: [Dash advanced callbacks tutorial](https://dash.plotly.com/advanced-callbacks)  
+callback_extras_intro = """ 
+[Dash advanced callbacks](https://dash.plotly.com/advanced-callbacks)
+"""
+
+callback_extras_code = """
 
 |What to use||When to use it |  
 | :----|:----| :----|  
@@ -351,18 +347,16 @@ callback_extras_intro = """
 """
 
 
-components_intro = """
-  #### __Dash Core Components Quickstart__    
+components_intro = """ 
      
-     - [Dash Core Components Overview](https://dash.plotly.com/dash-core-components) with code examples.  Find out more 
-     by typing in your Python terminal:  `help(dash_core_components.Checklist)` or any other component name. 
+[-Dash Core Components Overview](https://dash.plotly.com/dash-core-components) 
      
-     - [Dash HTML Components list](https://dash.plotly.com/dash-html-components)
+[-Dash HTML Components list](https://dash.plotly.com/dash-html-components)
      
-     - Plotly [Figure Reference](https://plotly.com/python/reference/index/) pages
+[-Plotly Figure Reference](https://plotly.com/python/reference/index/) 
      
-     - Plotly [Figure Structure](https://plotly.com/python/figure-structure/) tutorial
+[-Plotly Figure Structure Tutorial](https://plotly.com/python/figure-structure/) 
      
-     - Overview of [Plotly Express](https://plotly.com/python/plotly-express/)
+[-Overview of Plotly Express](https://plotly.com/python/plotly-express/)
 
 """

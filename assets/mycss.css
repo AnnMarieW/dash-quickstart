@@ -41,7 +41,7 @@ font-weight: 400;
 
 {selector:.export,rule:position:absolute;left:-15px;bottom:-30px}
 
-
+/*
 
 @font-face {
   font-family: 'Sparks-Bar-Narrow';
@@ -66,19 +66,21 @@ font-weight: 400;
   font-weight: normal;
   font-style: normal;
 }
-
+*/
 @font-face {
   font-family: 'Sparks-Bar-Wide';
-  src: url('https://tools.aftertheflood.com/sparks/output/eot/Sparks-Bar-Wide.eot');
+  src: Sparks-Bar-Wide.woff;
+ /* src: url('https://tools.aftertheflood.com/sparks/output/eot/Sparks-Bar-Wide.eot');
   src: url('https://tools.aftertheflood.com/sparks/output/eot/Sparks-Bar-Wide.eot?#iefix') format('embedded-opentype'),
        url('https://tools.aftertheflood.com/sparks/output/woff2/Sparks-Bar-Wide.woff2') format('woff2'),
        url('https://tools.aftertheflood.com/sparks/output/woff/Sparks-Bar-Wide.woff') format('woff'),
        url('https://tools.aftertheflood.com/sparks/output/ttf/Sparks-Bar-Wide.ttf') format('truetype'),
        url('https://tools.aftertheflood.com/sparks/output/svg/Sparks-Bar-Wide.svg#Sparks-Bar-Wide') format('svg');
+ */
   font-weight: normal;
   font-style: normal;
 }
-
+/*
 @font-face {
   font-family: 'Sparks-Bar-Extrawide';
   src: url('https://tools.aftertheflood.com/sparks/output/eot/Sparks-Bar-Extrawide.eot');
@@ -91,7 +93,7 @@ font-weight: 400;
   font-style: normal;
 }
 
-/* Dots */
+
 
 @font-face {
   font-family: 'Sparks-Dot-Extrasmall';
@@ -153,7 +155,7 @@ font-weight: 400;
   font-style: normal;
 }
 
-/* Dot-lines */
+
 
 @font-face {
   font-family: 'Sparks-Dotline-Extrathin';
@@ -214,7 +216,7 @@ font-weight: 400;
   font-weight: normal;
   font-style: normal;
 }
-
+*/
 .sparks {
   font-variant-ligatures: normal;
 }

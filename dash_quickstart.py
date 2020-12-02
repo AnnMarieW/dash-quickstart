@@ -37,13 +37,12 @@ Make code box
 """
 
 
-def make_code_box(title, id_btn, id_md, intro, code):
+def make_code_box(title, id_btn, id_md, children):
     """
     :param title: text to show when twistie box is closed
     :param id_btn: id of the copy button
     :param id_md: id of the content to copy to clipboard
-    :param intro: markdown content that does not get copied with button click
-    :param code: content to copy to the clipboard - typically a code block
+    :param children: content to copy to the clipboard - typically a code block
     :return: a div with a twistie box
     """
     return html.Div(
@@ -61,10 +60,9 @@ def make_code_box(title, id_btn, id_md, intro, code):
                             ),
                         ]
                     ),
-                    dcc.Markdown(children=intro),
-                    dcc.Markdown(id=id_md, children=code),
-                ],
-                style={"borderStyle": "solid", "borderWidth": 1,},
+                    dcc.Markdown(id=id_md, children=children),
+                ],className='shadow'
+               # style={"borderStyle": "solid", "borderWidth": 1,},
             ),
         ]
     )
@@ -215,98 +213,123 @@ howto_general= dbc.Table(
 Quickstart Tab content
 """
 
-test = """
-| City       | Value     | Return     |
-| :------------- | :----------: | -----------: |
-|  Montreal   | 41,531    | 431.245 |
-| Seattle   | 53,153 | 12.431 |
 
-        """
-
-quickstart_tab = (
-    dbc.Row(
-        dbc.Col(
-            dbc.Card(
-                [
-                    dbc.CardHeader(html.H4("Quickstart Apps")),
-                    dbc.CardBody(
-                        [
-                            html.Div(
-                                "Click on a section to see helpful links and code:",
-                                className="mb-2",
-                            ),
+quickstart_tab = dbc.Card(
+    [
+        dbc.CardHeader(html.H4("Quickstart Links and Apps")),
+        dbc.CardBody(
+            [
+                dbc.Row(
+                    [
+                        dbc.Col(dcc.Markdown(qstart.hello_world_intro), width=3, className='border-right'),
+                        dbc.Col(
                             make_code_box(
-                                "Dash Hello World ",
+                                "Dash Hello World quickstart code",
                                 "copy_quickstart",
                                 "md_quickstart",
-                                qstart.hello_world_intro,
                                 qstart.hello_world_code,
-                            ),
+                            ),className='mt-1'
+                        ),
+                ],className='border'),
+                dbc.Row(
+                    [
+                        dbc.Col(dcc.Markdown(qstart.datatable_intro,), width=3,className='border-right'),
+                        dbc.Col(
                             make_code_box(
-                                "Dash DataTable ",
+                                "Dash DataTable quickstart code ",
                                 "copy_DataTable",
                                 "md_DataTable",
-                                qstart.datatable_intro,
                                 qstart.datatable_code,
-                            ),
+                            ),className='mt-1'
+                        ),
+                ],className='border'),
+                dbc.Row(
+                    [
+                        dbc.Col(dcc.Markdown(qstart.bootstrap_intro,), width=3, className='border-right'),
+                        dbc.Col(
                             make_code_box(
-                                "dash-bootstrap",
+                                "dash-bootstrap quickstart",
                                 "copy_bootstrap",
                                 "md_bootstrap",
-                                qstart.bootstrap_intro,
                                 qstart.bootstrap_code,
-                            ),
+                            ),className='mt-1'
+                        ),
+                ],className='border'),
+                dbc.Row(
+                    [
+                        dbc.Col(dcc.Markdown(qstart.leaflet_intro, ), width=3, className='border-right'),
+                        dbc.Col(
                             make_code_box(
-                                "dash-leaflet ",
+                                "dash-leaflet quickstart",
                                 "copy_leaflet",
                                 "md_leaflet",
-                                qstart.leaflet_intro,
                                 qstart.leaflet_code,
-                            ),
+                            ), className='mt-1'
+                        ),
+                    ], className='border'),
+                dbc.Row(
+                    [
+                        dbc.Col(dcc.Markdown(qstart.callback_intro), width=3, className='border-right'),
+                        dbc.Col(
                             make_code_box(
-                                "Callbacks ",
+                                "Callbacks quickstart",
                                 "copy_callback",
                                 "md_callback",
-                                qstart.callback_intro,
                                 qstart.callback_code,
-                            ),
+                            ), className='mt-1'
+                        ),
+                    ], className='border'),
+
+                dbc.Row(
+                    [
+                        dbc.Col(dcc.Markdown(qstart.callback_extras_intro), width=3, className='border-right'),
+                        dbc.Col(
                             make_code_box(
-                                "Callback extras ",
+                                "Advanced Callbacks Cheatsheet",
                                 "copy_callback_extras",
                                 "md_callback_extras",
-                                qstart.callback_extras_intro,
-                                "",
-                            ),
+                                qstart.callback_extras_code
+                            ), className='mt-1'
+                        ),
+                    ], className='border'),
+
+                dbc.Row(
+                    [
+                        dbc.Col(dcc.Markdown(qstart.pattern_match_intro), width=3, className='border-right'),
+                        dbc.Col(
                             make_code_box(
                                 "Pattern Matching Callbacks",
                                 "copy_pattern_match",
                                 "md_pattern_match",
-                                qstart.pattern_match_intro,
                                 qstart.pattern_match_code,
-                            ),
+                            ), className='mt-1'
+                        ),
+                    ], className='border'),
+                dbc.Row(
+                    [
+                        dbc.Col(dcc.Markdown(qstart.datasets_intro), width=3, className='border-right'),
+                        dbc.Col(
                             make_code_box(
-                                "Datasets ",
+                                "Plotly and Pandas Datasets",
                                 "copy_datasets",
                                 "md_datasets",
-                                qstart.datasets_intro,
-                                qstart.datasets_code,
-                            ),
-                            make_code_box(
-                                "Dash Components and Plotly Figure references",
-                                "copy_components",
-                                "md_components",
-                                qstart.components_intro,
-                                "",
-                            ),
-                        ]
-                    ),
-                ]
-            ),
-            width=10,
-            className="m-4",
-        )
-    ),
-)
+                                qstart.pattern_match_code,
+                            ), className='mt-1'
+                        ),
+                    ], className='border'),
+
+                dbc.Row(
+                    [
+                        dbc.Col(dcc.Markdown(qstart.components_intro), width=3, className='border-right'),
+
+                    ], className='border'),
+            ]
+        ),
+    ],
+    className="m-4",
+),
+
+
 
 
 """
