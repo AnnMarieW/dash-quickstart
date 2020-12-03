@@ -7,17 +7,19 @@ from dash.dependencies import Input, Output
 from dash_table.Format import Format, Scheme, Group
 from dash.exceptions import PreventUpdate
 
-df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv")
-
 external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-
+df = pd.read_csv(
+    "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
+)
 formatted = Format().scheme(Scheme.fixed).precision(0).group(Group.yes)
 spark_options = [
+    "Sparks-Bar-Narrow",
     "Sparks-Bar-Medium",
     "Sparks-Bar-Wide",
+    "Sparks-Bar-Extrawide",
     "Sparks-Dot-Medium",
     "Sparks-Dot-Large",
     "Sparks-Dot-Extralarge",
@@ -31,36 +33,38 @@ spark_options = [
 
 app.layout = html.Div(
     [
-        html.H2("Sparkline Demo App"),
-        html.Div("Fonts from https://github.com/aftertheflood/sparks"),
-        html.Div([
-        dcc.Dropdown(
-            id="spark_style",
-            options=[{"label": i, "value": i} for i in spark_options],
-            value="Sparks-Bar-Extrawide",
-            placeholder="Select sparkline style",
-            style={"width": 300},
+        # html.H4("Sparkline Demo App"),
+        #   html.Div("Fonts from https://github.com/aftertheflood/sparks"),
+        html.Div(
+            [
+                dcc.Dropdown(
+                    id="spark_style",
+                    options=[{"label": i, "value": i} for i in spark_options],
+                    value="Sparks-Bar-Extrawide",
+                    placeholder="Select sparkline style",
+                    style={"width": 300},
+                ),
+                dcc.RadioItems(
+                    id="stat_radio",
+                    options=[
+                        {"label": i, "value": i}
+                        for i in ["pop", "lifeExp", "gdpPercap"]
+                    ],
+                    value="gdpPercap",
+                    labelStyle={"display": "inline-block"},
+                ),
+                dcc.RangeSlider(
+                    id="year_slider",
+                    marks={i: str(i) for i in df["year"].unique().tolist()},
+                    min=1952,
+                    max=2007,
+                    allowCross=False,
+                    value=[1987, 2007],
+                ),
+            ],
+            style={"width": 600, "margin": 20},
         ),
-        dcc.RadioItems(
-            id="stat_radio",
-            options=[{"label": i, "value": i} for i in ["pop", "lifeExp", "gdpPercap"]],
-            value="gdpPercap",
-            labelStyle={"display": "inline-block"},
-        ),
-
-        dcc.RangeSlider(
-            id="year_slider",
-            marks={i: str(i) for i in df["year"].unique().tolist()},
-            min=1952,
-            max=2007,
-            allowCross=False,
-            value=[1987, 2007],
-        )],style={'width':600, 'margin':20}),
-        dash_table.DataTable(
-            id="table",
-            filter_action="native",
-            sort_action="native",
-        ),
+        dash_table.DataTable(id="table", sort_action="native",),
     ]
 )
 
@@ -68,32 +72,28 @@ app.layout = html.Div(
 def make_sparkline(df_wide):
     """
 
-    :param df_wide: dataframe in a "wide" format with the sparkline periods as columns
-    :return: a series with the data formatted for the sparkline fonts.
+    :param df_wide: dataframe in "wide" format with the sparkline periods as columns
+    :return: a series formatted for the sparkline fonts.
              Example:  '453{10,40,30,80}690'
     """
 
     # normalize between 0 and 100
     max = df_wide.max(axis=1)
     min = df_wide.min(axis=1)
-
-    # if data is all positive numbers use: (x)/ (x.max)*100
-    df_spark = df_wide.div((max), axis="index").mul(100).round(decimals=0)
-
-    # Or use this formula if the data has negative numbers:  ( (x-x.min)/ (x.max-x.min)*100
-    #df_spark = df_wide.sub(min, axis="index").div((max - min).round(decimals=0), axis="index") * 100
+    # Use this formula if the data has negative numbers:  (x-x.min)/ (x.max-x.min)*100
+    df_spark = df_wide.sub(min, axis="index").div((max - min), axis="index").mul(100)
+    #  if data is all positive numbers this may be used: (x)/ (x.max)*100
+    #  df_spark = df_wide.div((max), axis="index").mul(100)
 
     # format the normalized numbers like: '25,20,50,80'
     df_spark["spark"] = df_spark.astype(int).astype(str).agg(",".join, axis=1)
 
     # get the starting and ending numbers
-    df_spark["start"] = df_wide[df_wide.columns[0]].astype(int).astype(str)
-    df_spark["end"] = df_wide[df_wide.columns[-1]].astype(int).astype(str)
+    df_spark["start"] = df_wide[df_wide.columns[0]].round(0).astype(int).astype(str)
+    df_spark["end"] = df_wide[df_wide.columns[-1]].round(0).astype(int).astype(str)
 
     # put it all together
     return df_spark["start"] + "{" + df_spark["spark"] + "}" + df_spark["end"]
-
-
 
 
 @app.callback(
@@ -109,7 +109,9 @@ def update_table(year, stat, spark_style):
         raise PreventUpdate
 
     dff = df[(df["year"] >= year[0]) & (df["year"] <= year[1])]
-    dff = dff.pivot(index=["country", "continent"], columns="year", values=stat)
+    dff = pd.pivot_table(
+        dff, index=["country", "continent"], columns="year", values=stat
+    )
     dff["sparkline"] = make_sparkline(dff)
     dff = dff.reset_index()
 
@@ -129,10 +131,32 @@ if __name__ == "__main__":
     app.run_server(debug=True)
 
 
-'''
+"""
 ===============================================================================
-Move the following css to the assets folder in your root directory.  
+This app demos all the spark fonts available.  For testing, move all of the css below to the assets
+folder in your root directory. 
 
+After you select the font to use in your app, here is an example of how to serve the fonts locally:
+Go to the url link of the font you select and it will download a file.  Move that file to the assets folder. 
+Here is an example of the css to add to your .ccs file in the assets folder to include the
+Sparks-Bar_Extrawide font in your app:
+
+        @font-face {
+          font-family: 'Sparks-Bar-Extrawide';
+          src: url(Sparks-Bar-Extrawide.ttf);
+          font-weight: normal;
+          font-style: normal;
+        }        
+                
+        .sparks {
+          font-variant-ligatures: normal;
+        }        
+        .bar-extrawide {
+          font-family: Sparks-Bar-Wide;
+          font-size:18px
+        }
+
+For more info see https://dash.plotly.com/external-resources
 ===============================================================================
 
 
@@ -359,4 +383,4 @@ Move the following css to the assets folder in your root directory.
 }
 
 
-'''
+"""

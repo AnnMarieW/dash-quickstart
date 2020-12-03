@@ -4,6 +4,13 @@
   margin: 0;
 }
 
+body {
+font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, “Helvetica Neue”, Arial, sans-serif, “Apple Color Emoji”, “Segoe UI Emoji”, “Segoe UI Symbol”;
+/* default is 1rem or 16px */
+font-size: 14px;
+font-weight: 400;
+line-height: 1.5;
+}
 
 
 .tabulator-row .tabulator-cell {
@@ -34,7 +41,8 @@
 
 {selector:.export,rule:position:absolute;left:-15px;bottom:-30px}
 
-/**
+/**  Links to the fonts hosted on github - use for testing only.  For production, download the font files **/
+
 @font-face {
   font-family: 'Sparks-Bar-Narrow';
   src: url('https://tools.aftertheflood.com/sparks/output/eot/Sparks-Bar-Narrow.eot');
@@ -145,7 +153,9 @@
   font-style: normal;
 }
 
-/* Dot-lines
+
+/* Dot-lines */
+
 
 @font-face {
   font-family: 'Sparks-Dotline-Extrathin';
@@ -206,7 +216,17 @@
   font-weight: normal;
   font-style: normal;
 }
-*/
+
+
+
+/*  The following three fonts are downloaded and held locally in the assets folder */
+
+@font-face {
+  font-family: 'Sparks-Bar-Extrawide';
+  src: url(Sparks-Bar-Extrawide.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
 
 
 @font-face {
@@ -216,13 +236,6 @@
   font-style: normal;
 }
 
-
-@font-face {
-  font-family: 'Sparks-Bar-Extrawide';
-  src: url(Sparks-Bar-Extrawide.ttf);
-  font-weight: normal;
-  font-style: normal;
-}
 
 
 @font-face {
@@ -282,3 +295,4 @@
 .dotline-extrathick {
   font-family: Sparks-Dotline-Extrathick;
 }
+

@@ -158,6 +158,7 @@ howto_datatables= dbc.Table(
             make_md_row(howto.datatable_conditional_formatting, ""),
             make_md_row(howto.datatable_conditional_formatting2, howto.datatable_conditional_formatting2_code),
             make_md_row(howto.datatable_fix_cut_off, ""),
+            make_image_row("dt_spark", howto.datatable_spark_intro, howto.datatable_spark_image),
         ]
     )],
     bordered=True

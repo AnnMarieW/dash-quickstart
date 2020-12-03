@@ -109,6 +109,16 @@ datatable_conditional_formatting2_code="""```
         app.run_server(debug=True)
     ```"""
 
+datatable_spark_intro="""
+[Sparklines as Fonts in a DataTable](https://community.plotly.com/t/sparklines-as-fonts-embedding-minimal-sparklines-in-tables-components/39468)  
+
+[Link to app](https://github.com/AnnMarieW/dash-quickstart/blob/master/demo_apps/sparkline.py) with notes on serving the fonts locally
+
+"""
+
+datatable_spark_image="""    
+    https://user-images.githubusercontent.com/72614349/101054462-27fff200-3546-11eb-8e25-48b594bb307f.gif
+    """
 
 
 """
