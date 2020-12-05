@@ -43,7 +43,7 @@ These apps are great for inspiration and can be used as templates for your own p
 
 
 This app is a work in progress.  If you have comments or suggestions, please feel free to [start a new issue](https://github.com/AnnMarieW/dash-quickstart/issues/new) 
-or do a pull request. You can also find me on the Dash Community Forum   @AnnMarieW   
+or do a pull request. You can also find me on the [Dash Community Forum](https://community.plotly.com/)   @AnnMarieW   
 
 I'd be delighted to hear from you!
 

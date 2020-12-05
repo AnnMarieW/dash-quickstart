@@ -7,8 +7,8 @@ tips="""
     PEP 8 compliant, but it also helps you code faster.  No need to spend a lot of time focusing on things like spacing 
     and alignment - -  Black can do that for you in a sec!  It also makes  your code easier to read and to debug.
     
-    - When you have mulitple inputs and outputs, the callbacks can get quite long.  A [best practice][#1054]
-    is to break the callbacks into smaller functions so that a multiple-input callback acts like a router. 
+- When you have mulitple inputs and outputs, the callbacks can get quite long.  A [best practice][#1054] is to break the
+ callbacks into smaller functions so that a multiple-input callback acts like a router. 
 
 - As you add more features and pages to your app, it can grow to be hundreds( or thousands!) of lines of code.  It then
     becomes even more important to organize your code so it is easier to maintain and debug. One method is to use a

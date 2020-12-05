@@ -216,7 +216,7 @@ How to General
 
 gen_multi_page= """
     #### Multi Page Apps
-    - The [multi-page app in this directory](https://github.com/AnnMarieW/dash-quickstart/tree/master/demo_apps/multi-page-app).
+    - The [multi-page app in this directory](https://github.com/AnnMarieW/dash-quickstart/tree/master/demo_apps/multi-page-app)
     was created using these two single page apps as [app1](https://dash.plotly.com/interactive-graphing) and [app2](https://dash.plotly.com/basic-callbacks) 
     from the Dash Tutorial.  It follows the [Structuring a Multi-Page App](https://dash.plotly.com/urls) example to create
     the multi page app.  
@@ -234,7 +234,7 @@ gen_image_in_bubble_image="""
     """
 
 gen_real_time_data="""
-    - [Dash with real time data](https://stackoverflow.com/questions/63589249/plotly-dash-display-real-time-data-in-smooth-animation)
+    - Here is a graph with [real time data](https://stackoverflow.com/questions/63589249/plotly-dash-display-real-time-data-in-smooth-animation)
     """
 
 gen_real_time_data_image="""
@@ -254,9 +254,9 @@ gen_pattern_matching_image="""
 gen_tabulator="""
     ---
     #### Dash Tabulator 
-    [Dash Tabulator component example](https://community.plotly.com/t/tabulator-dash-component/42261/21?u=annmariew)
-    Tabulator features, such as case insensitive filters, the ability to do group-by, plus include calculations ike sums 
-    and averages.
+    This is an example app using the [Dash Tabulator component](https://community.plotly.com/t/tabulator-dash-component/42261/21?u=annmariew)
+    The Tabulator table has some nice features that the Dash DataTable does not have yet such as case insensitive filters,
+    and group-by functionality.  There is also an option to include calculations ike sums and averages.
        
     """
 gen_tabulator_image="""
