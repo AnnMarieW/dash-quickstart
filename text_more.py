@@ -1,21 +1,19 @@
 
 
-"""
-===============================================================================
-More Resources
-"""
 more_text = """ 
 
+## Where to find more help
 
-- One of the best sources of information about Dash is in the official Plotly [Dash Tutorial](https://dash.plotly.com/installation)
+
+- One of the best sources of information about Dash is in the official Plotly [Dash Tutorial][dash-tutorial]
 and documentation.  It's continually being updated as new features are added to Dash and Plotly.  It also has lots of great examples.  
 
 - Check out the  [Dash Community Forum](https://community.plotly.com/). You will probably find an answer in one of the posts,
 but if not, try posting a question.
 
--  Here is a guide on [how to get your questions answered on the forum](https://community.plotly.com/t/how-to-get-your-questions-answered-on-the-plotly-forum/40551).
+-  Here is a guide on [how to get your questions answered on the forum][forum-questions].
 
-- Subscribe to  [video tutorials by Charming Data](https://www.youtube.com/channel/UCqBFsuAz41sqWcFjZkqmJqQ/featured)
+- Subscribe to  [video tutorials by Charming Data][charming-data]
 created by Dash community member Adam Schroeder  
 
 
@@ -24,7 +22,7 @@ ___
 
 
 
-##### More apps:
+## More apps
 
 These apps are great for inspiration and can be used as templates for your own projects.
 
@@ -41,11 +39,20 @@ These apps are great for inspiration and can be used as templates for your own p
 ---
 
 
-
+## Contribute
 
 
 This app is a work in progress.  If you have comments or suggestions, please feel free to [start a new issue](https://github.com/AnnMarieW/dash-quickstart/issues/new) 
 or do a pull request. You can also find me on the Dash Community Forum   @AnnMarieW   
 
 I'd be delighted to hear from you!
+
+
+
+[dash-tutorial]: https://dash.plotly.com/installation
+[forum-questions]: https://community.plotly.com/t/how-to-get-your-questions-answered-on-the-plotly-forum/40551
+[charming-data]: https://www.youtube.com/channel/UCqBFsuAz41sqWcFjZkqmJqQ/featured
+
+
+
 """

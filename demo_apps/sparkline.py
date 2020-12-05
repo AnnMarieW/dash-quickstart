@@ -14,6 +14,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 df = pd.read_csv(
     "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
 )
+
 formatted = Format().scheme(Scheme.fixed).precision(0).group(Group.yes)
 spark_options = [
     "Sparks-Bar-Narrow",
@@ -33,8 +34,8 @@ spark_options = [
 
 app.layout = html.Div(
     [
-        # html.H4("Sparkline Demo App"),
-        #   html.Div("Fonts from https://github.com/aftertheflood/sparks"),
+        html.H4("Sparkline Demo App"),
+        html.Div("Fonts from https://github.com/aftertheflood/sparks"),
         html.Div(
             [
                 dcc.Dropdown(
@@ -77,12 +78,13 @@ def make_sparkline(df_wide):
              Example:  '453{10,40,30,80}690'
     """
 
+
     # normalize between 0 and 100
     max = df_wide.max(axis=1)
     min = df_wide.min(axis=1)
     # Use this formula if the data has negative numbers:  (x-x.min)/ (x.max-x.min)*100
     df_spark = df_wide.sub(min, axis="index").div((max - min), axis="index").mul(100)
-    #  if data is all positive numbers this may be used: (x)/ (x.max)*100
+    #  if data is all positive numbers this may be better: (x)/ (x.max)*100
     #  df_spark = df_wide.div((max), axis="index").mul(100)
 
     # format the normalized numbers like: '25,20,50,80'
@@ -109,21 +111,17 @@ def update_table(year, stat, spark_style):
         raise PreventUpdate
 
     dff = df[(df["year"] >= year[0]) & (df["year"] <= year[1])]
-    dff = pd.pivot_table(
-        dff, index=["country", "continent"], columns="year", values=stat
-    )
+    dff = pd.pivot_table(dff, index=["country", "continent"], columns="year", values=stat)
     dff["sparkline"] = make_sparkline(dff)
-    dff = dff.reset_index()
 
+    dff = dff.reset_index()
     columns = [
         {"name": str(i), "id": str(i), "format": formatted, "type": "numeric"}
         for i in dff.columns
     ]
     data = dff.to_dict("records")
+    style = [{"if": {"column_id": "sparkline"}, "font-family": spark_style,}]
 
-    style = [
-        {"if": {"column_id": "sparkline"}, "font-family": spark_style,},
-    ]
     return columns, data, style
 
 

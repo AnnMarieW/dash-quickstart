@@ -1,3 +1,9 @@
+import pathlib
+
+# set relative path
+PATH = pathlib.Path(__file__).parent
+DEMO_APPS_PATH = PATH.joinpath("./demo_apps").resolve()
+
 
 """
 ===============================================================================
@@ -66,20 +72,31 @@ datatable_code = """```
 bootstrap_intro = """    
 [-dash-bootstrap documentation & tutorial](https://dash-bootstrap-components.opensource.faculty.ai/docs/quickstart/)  
 
--[ Best Bootstrap cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)
+-[ My favorite Bootstrap cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)
 """
 
 bootstrap_code = """``` 
     import dash
     import dash_bootstrap_components as dbc
+    import dash_html_components as html
     
     app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
     
     app.layout = dbc.Container(
-        dbc.Alert("Hello Bootstrap!", color="success"),
-        className="p-5",
+        [
+            html.H1("Title"),
+            html.Hr(),
+            dbc.Row(
+                [
+                    dbc.Col('row 1, column 1 content', md=3),
+                    dbc.Col('row 1, column 2 content', md=9),
+                ],
+                align="center",
+            ),
+        ],
         fluid=True,
     )
+    
     
     if __name__ == "__main__":
         app.run_server(debug=True)
@@ -245,22 +262,24 @@ datasets_code = """
 ```
     import pandas as pd
     import numpy as np
-    df = pd.DataFrame(np.random.randn(6, 4), columns=list('ABCD'))
-```
-    
-- Datasets frequently used in the Dash and Plotly tutorials:  
-
-
-```
     import plotly.express as px
     
+    # random numbers
+    df = pd.DataFrame(np.random.randn(6, 4), columns=list('ABCD'))  
+
+    
+    # ploty express datasets.  See more at 
+    #  https://plotly.com/python-api-reference/generated/plotly.data.html#module-plotly.data
+    #  
     df = px.data.gapminder()
     df = px.data.iris()
     df = px.data.tips()
     
+    # other hosted datasets
     df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/solar.csv')
     df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
     
+    # used in the datatable conditional formatting chapter:
     data = dict(
         [
             ("Date", ["2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"]),
@@ -360,3 +379,9 @@ components_intro = """
 [-Overview of Plotly Express](https://plotly.com/python/plotly-express/)
 
 """
+
+
+
+with open(DEMO_APPS_PATH.joinpath("conditional_formatting.py")) as f:
+    conditional_formatting_code = f.read()
+conditional_formatting_code = ''.join(['```', conditional_formatting_code, '```'])

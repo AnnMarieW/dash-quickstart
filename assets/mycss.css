@@ -6,24 +6,50 @@ font-weight: 400;
 /*line-height: 1.5;*/
 }
 
+
+/* when using Bootsrap this fixes the negative margins that cuts off data at beginning and end of rows */
 .dash-table-container .row {
   display: block;
   margin: 0;
 }
-
-
-
 .tabulator-row .tabulator-cell {
     padding:0;   
 }
 
-
-.my-margin {
-   
-   background-color: rgb(255,0,0);
-
+/*  when using Bootstrap, this will add row borders to the table in dcc.Markdown
+ *   Table
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+table {
+  border-collapse: collapse;
 }
-/*
+th:not(.CalendarDay),
+td:not(.CalendarDay) {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #E1E1E1; }
+th:first-child:not(.CalendarDay),
+td:first-child:not(.CalendarDay) {
+  padding-left: 0; }
+th:last-child:not(.CalendarDay),
+td:last-child:not(.CalendarDay) {
+  padding-right: 0; }
+
+
+
+/* When using Bootstrap, this will add the left border style to blockquotes in dcc.Markdown */
+/* Blockquotes
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+blockquote {
+  border-left: 4px lightgrey solid;
+  padding-left: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 0rem;
+}
+
+
+
+/*  moves the export button
 .export{
     position: absolute;
     right: 50%;
@@ -41,7 +67,7 @@ font-weight: 400;
 
 {selector:.export,rule:position:absolute;left:-15px;bottom:-30px}
 
-/*
+/*  include if using spark lines
 
 @font-face {
   font-family: 'Sparks-Bar-Narrow';
