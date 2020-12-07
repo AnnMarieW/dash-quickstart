@@ -24,7 +24,7 @@ FONT_AWESOME = (
     "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 )
 
-app = dash.Dash(external_stylesheets=[FONT_AWESOME, dbc.themes.SPACELAB,])
+app = dash.Dash(__name__, external_stylesheets=[FONT_AWESOME, dbc.themes.SPACELAB,])
 
 
 """
@@ -33,30 +33,31 @@ Make code box
 """
 
 
-def make_code_box(title, id_btn, id_md, children):
+def make_code_box(title, id, children):
     """
     :param title: text to show when twistie box is closed
-    :param id_btn: id of the copy button
-    :param id_md: id of the content to copy to clipboard
+    :param id of the code box
     :param children: content to copy to the clipboard - typically a code block
     :return: a div with a twistie box
     """
     return html.Div(
         [
             html.Details(
-                [
+                open=False,
+                id="open_"+id,
+                children=[
                     html.Summary(
                         [
                             title,
                             html.Button(
-                                id=id_btn,
+                                id="copy_"+id,
                                 n_clicks=0,
                                 className="fa fa-copy",
                                 style={"border": "none"},
                             ),
                         ]
                     ),
-                    dcc.Markdown(id=id_md, children=children, className="p-2"),
+                    dcc.Markdown(id="md_"+id, children=children, className="p-2"),
                 ],
                 className="shadow mt-2",
             ),
@@ -77,9 +78,19 @@ quickstart_tab = (
             dbc.CardHeader(html.H4("Quickstart Links and Apps")),
             dbc.CardBody(
                 [
-                    html.Div(
-                        "cntr-click on link to open in new browser window",
-                        style={"font-size": "75%"},
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                html.Div(
+                                    "cntr-click on link to open in new browser window",
+                                    style={"font-size": "75%"},
+                                ),
+                                width=3,
+                            ),
+                            dbc.Col(
+                                dbc.Button("open/close all code boxes", id="open_button", size="sm"),
+                            ),
+                        ],
                     ),
                     dbc.Row(
                         [
@@ -91,8 +102,7 @@ quickstart_tab = (
                             dbc.Col(
                                 make_code_box(
                                     "Dash Hello World quickstart code",
-                                    "copy_quickstart",
-                                    "md_quickstart",
+                                    "quickstart",
                                     qstart.hello_world_code,
                                 ),
                             ),
@@ -110,14 +120,12 @@ quickstart_tab = (
                                 [
                                     make_code_box(
                                         "Dash DataTable quickstart code ",
-                                        "copy_DataTable",
-                                        "md_DataTable",
+                                        "DataTable",
                                         qstart.datatable_code,
                                     ),
                                     make_code_box(
                                         "Dash DataTable conditional formatting quickstart code ",
-                                        "copy_conditional_formatting",
-                                        "md_conditional_formatting",
+                                        "conditional_formatting",
                                         qstart.conditional_formatting_code,
                                     ),
                                 ],
@@ -135,8 +143,7 @@ quickstart_tab = (
                             dbc.Col(
                                 make_code_box(
                                     "dash-bootstrap quickstart",
-                                    "copy_bootstrap",
-                                    "md_bootstrap",
+                                    "bootstrap",
                                     qstart.bootstrap_code,
                                 ),
                             ),
@@ -153,8 +160,7 @@ quickstart_tab = (
                             dbc.Col(
                                 make_code_box(
                                     "dash-leaflet quickstart",
-                                    "copy_leaflet",
-                                    "md_leaflet",
+                                    "leaflet",
                                     qstart.leaflet_code,
                                 ),
                             ),
@@ -171,8 +177,7 @@ quickstart_tab = (
                             dbc.Col(
                                 make_code_box(
                                     "Callbacks quickstart",
-                                    "copy_callback",
-                                    "md_callback",
+                                    "callback",
                                     qstart.callback_code,
                                 ),
                             ),
@@ -189,8 +194,7 @@ quickstart_tab = (
                             dbc.Col(
                                 make_code_box(
                                     "Advanced Callbacks Cheatsheet",
-                                    "copy_callback_extras",
-                                    "md_callback_extras",
+                                    "callback_extras",
                                     qstart.callback_extras_code,
                                 ),
                             ),
@@ -207,8 +211,7 @@ quickstart_tab = (
                             dbc.Col(
                                 make_code_box(
                                     "Pattern Matching Callbacks",
-                                    "copy_pattern_match",
-                                    "md_pattern_match",
+                                    "pattern_match",
                                     qstart.pattern_match_code,
                                 ),
                             ),
@@ -225,8 +228,7 @@ quickstart_tab = (
                             dbc.Col(
                                 make_code_box(
                                     "Plotly and Pandas Datasets",
-                                    "copy_datasets",
-                                    "md_datasets",
+                                    "datasets",
                                     qstart.datasets_code,
                                 ),
                             ),
@@ -305,7 +307,7 @@ howto_tab = html.Div(
         html.H3("DataTables", className="bg-primary text-white my-4"),
         # DataTable Formatting numbers
         dcc.Markdown(howto.datatable_format_numbers),
-        make_image_row("format_numbers", howto.datatable_format_numbers_image),
+        #make_image_row("format_numbers", howto.datatable_format_numbers_image),
         # DataTable Move export button
         dcc.Markdown(howto.datatable_move_export_button),
         dcc.Markdown(howto.datatable_move_export_button_code, className="ml-4"),
@@ -315,8 +317,7 @@ howto_tab = html.Div(
         html.Div(
             make_code_box(
                 "conditional formatting example code",
-                "copy_conditional_formatting2",
-                "md_conditional_formatting2",
+                "conditional_formatting2",
                 howto.datatable_conditional_formatting2_code,
             ),
             className="ml-4",
@@ -368,8 +369,7 @@ howto_tab = html.Div(
         html.Div(
             make_code_box(
                 "dropdown options example code",
-                "copy_dropdown_optons",
-                "md_dropdown_options",
+                "dropdown_options",
                 howto.gen_options_code,
             ),
             className="ml-4",
@@ -439,6 +439,18 @@ quickstart_codebocks = [
     )
     for i in quickstart_codebocks
 ]
+
+
+@app.callback(
+    [Output("open_" + i,'open') for i in quickstart_codebocks],
+    Input("open_button", "n_clicks"),
+    State("open_quickstart",'open'),
+)
+def open_twistie(n, open):
+    if n:
+        return [not open] * len(quickstart_codebocks)
+    return [open] * len(quickstart_codebocks)
+
 
 
 @app.callback(

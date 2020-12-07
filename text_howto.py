@@ -22,7 +22,7 @@ How to DataTables
 """
 
 datatable_format_numbers = """
-    #### Formatting numbers
+    #### How to Format numbers
      - Here is an [app](https://formattable.pythonanywhere.com/).  to help format numerical data in the datatable.
        You can make selections and see the code used to format the table.
     """
@@ -34,33 +34,53 @@ datatable_format_numbers_image = """
 datatable_fix_cut_off= """   
     ---
     
-    #### Fix rows with cut off data 
+    #### How to fix rows with cut off data 
     - When using Bootstrap with the datatable there is a conflict with the row class that will cause the data to overflow
     the table container.  It can be fixed with some custom css. See more info
     [Here](https://dash-bootstrap-components.opensource.faculty.ai/docs/faq/)"""
 
 datatable_move_export_button="""
 ---
-#### Move export button
-- Add the following to your [css file in the assets folder](https://dash.plotly.com/external-resources) to move the export button.  
-- And a related issue -- here is how to [Move the toggle columns button](https://community.plotly.com/t/datatable-toggle-columns-button-placement-in-python/46768/2)
+#### How to Move Export or Toggle button
+Here are two options to move the buttons to the bottom of the table.  Change the "rule" to move the buttons to other
+locations.
 """
 datatable_move_export_button_code="""
     ```
-    .export
-    {
-        position: absolute;
-    right: 50 %;
-    font - type: sans - serif;
-    [...]
-    }
+    import dash
+    import dash_table
+    import pandas as pd
+    
+    df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/solar.csv")
+    
+    app = dash.Dash(__name__)
+    
+    app.layout = dash_table.DataTable(
+        id="table",
+        columns=[{"name": i, "id": i, "hideable": True} for i in df.columns],
+        export_format="xlsx",
+        css=[
+            # Use this if only export button
+            #{"selector": ".export", "rule": "position:absolute; left: 0px; bottom:-30px"},
+            
+            # Use this if both export button and toggle columns button
+            {
+                "selector": ".dash-spreadsheet-menu",
+                "rule": "position:absolute; left:0px; bottom:-30px",
+            },
+        ],
+        data=df.to_dict("records"),
+    )
+    
+    if __name__ == "__main__":
+        app.run_server(debug=True)
     ```"""
 
 datatable_conditional_formatting="""
 ---
-#### Conditional Formatting
+#### How to do conditional formatting
 
-- [Here is an app](https://github.com/AnnMarieW/dash-quickstart/blob/master/demo_apps/conditional_formatting.py)
+- Here is an [app](https://github.com/AnnMarieW/dash-quickstart/blob/master/demo_apps/conditional_formatting.py)
 like the one used in the [Conditional Formatting](https://dash.plotly.com/datatable/conditional-formatting) 
 chapter in the Dash Tutorial.
 """
@@ -121,8 +141,9 @@ datatable_conditional_formatting2_code="""```
 
 datatable_spark_intro="""
 ---
-#### Sparklines 
-- How to add [Sparklines as Fonts in a DataTable](https://community.plotly.com/t/sparklines-as-fonts-embedding-minimal-sparklines-in-tables-components/39468)  
+#### How to add Sparklines 
+- See this discussion on the forum for more information and code for the app in image below: [Sparklines as Fonts in a DataTable](https://community.plotly.com/t/sparklines-as-fonts-embedding-minimal-sparklines-in-tables-components/39468)
+  
 """
 
 datatable_spark_image="""    
@@ -136,9 +157,11 @@ How to Bootstrap
 """
 
 bootstrap_modal = """
-    - How to: make a [modal for help text](https://community.plotly.com/t/any-way-to-create-an-instructions-popout/18828/11?u=annmariew)
+    #### How to use Modals
+    - See an example here: [modal for help text](https://community.plotly.com/t/any-way-to-create-an-instructions-popout/18828/11?u=annmariew)
     """
 bootstrap_live_stages= """ 
+    #### How to make a progress bar
     - How to: make a [live stages progress bar](https://community.plotly.com/t/live-stage-visualization/45095)
     """
 bootstrap_live_stages_image= """ 
@@ -153,6 +176,7 @@ How to Markdown
 """
 
 markdown_css="""
+#### How to style Blockquotes and Tables in dcc.Markdown
 - Blockquotes and tables are unstyled by default in Bootstrap. When using dcc.Markdown with Bootstrap add the following 
 to the .css file in the assets folder to add style to the Block quotes and Tables
 """
@@ -201,7 +225,7 @@ How to Deployment
 
 deployment="""
     ---
-    #### Deployment
+    #### How to deploy your app
     - How to: [deploy your app on Heroku](https://community.plotly.com/t/deploying-your-dash-app-to-heroku-the-magical-guide/46723)
 
     - How to: [deploy your app on pythonanywhere.com](https://github.com/conradho/dashingdemo)
@@ -215,7 +239,7 @@ How to General
 
 
 gen_multi_page= """
-    #### Multi Page Apps
+    #### How to make a multi-page app
     - The [multi-page app in this directory](https://github.com/AnnMarieW/dash-quickstart/tree/master/demo_apps/multi-page-app)
     was created using these two single page apps as [app1](https://dash.plotly.com/interactive-graphing) and [app2](https://dash.plotly.com/basic-callbacks) 
     from the Dash Tutorial.  It follows the [Structuring a Multi-Page App](https://dash.plotly.com/urls) example to create
@@ -226,15 +250,16 @@ gen_multi_page= """
 
 gen_image_in_bubble="""
     ---
-    #### Graphs
-    - How to make a [Graph with images inside bubble](https://community.plotly.com/t/put-images-inside-bubbles/41364/2)
+    #### How to make a graph with images inside bubbles
+    - See the code here: [Graph with images inside bubble](https://community.plotly.com/t/put-images-inside-bubbles/41364/2)
     """
 gen_image_in_bubble_image="""
     https://user-images.githubusercontent.com/72614349/100633817-c6dce200-32eb-11eb-81a9-fcc3027f50f0.png    
     """
 
 gen_real_time_data="""
-    - Here is a graph with [real time data](https://stackoverflow.com/questions/63589249/plotly-dash-display-real-time-data-in-smooth-animation)
+    #### How to make a graph with real time data
+    - See code here: [real time data](https://stackoverflow.com/questions/63589249/plotly-dash-display-real-time-data-in-smooth-animation)
     """
 
 gen_real_time_data_image="""
@@ -243,9 +268,9 @@ gen_real_time_data_image="""
 
 gen_pattern_matching="""
     ---
-    #### Pattern Matching Callbacks
+    #### How to do pattern matching callbacks
     Here is an example of a [Pattern Matching Callback](https://community.plotly.com/t/pattern-call-backs-regarding-adding-dynamic-graphs/40724/4?u=annmariew)
-    with deletable charts.
+    with deletable charts.  See tutorial  [here](https://dash.plotly.com/pattern-matching-callbacks).
     """
 gen_pattern_matching_image="""
     https://user-images.githubusercontent.com/72614349/100633822-c8a6a580-32eb-11eb-975e-329f50689904.gif
@@ -253,7 +278,7 @@ gen_pattern_matching_image="""
 
 gen_tabulator="""
     ---
-    #### Dash Tabulator 
+    #### How to use dash-tabulator 
     This is an example app using the [Dash Tabulator component](https://community.plotly.com/t/tabulator-dash-component/42261/21?u=annmariew)
     The Tabulator table has some nice features that the Dash DataTable does not have yet, such as case insensitive filters
     and group-by functionality.  There is also an option to include calculations ike sums and averages.
@@ -265,7 +290,7 @@ gen_tabulator_image="""
 
 gen_copy_to_clipboard="""
     ---
-    #### Copy to Clipboard
+    #### How to copy to the clipboard
     Here is how to [copy text to a clipboard](https://github.com/AnnMarieW/dash-quickstart/blob/master/demo_apps/copy_to_clipboard.py)
      on a button click - like on the Quickstart page of this app
 """
@@ -273,7 +298,7 @@ gen_copy_to_clipboard="""
 
 gen_options="""
 ---
-#### Options for dropdowns
+#### How to create options for dropdowns
 How to make options for dropdowns from 2 columns of a dataframe
 """
 

@@ -377,7 +377,7 @@ figure_intro = """
 
 [Plotly Figure Structure Tutorial](https://plotly.com/python/figure-structure/) 
 
-[Overview of Plotly Express](https://plotly.com/python/plotly-express/)
+[Plotly Express Overview](https://plotly.com/python/plotly-express/)
 
 [Plotly Express Reference](https://plotly.com/python-api-reference/plotly.express.html)
 """
