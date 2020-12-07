@@ -243,6 +243,16 @@ quickstart_tab = (
                         ],
                         className="border",
                     ),
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                dcc.Markdown(qstart.figure_intro),
+                                width=3,
+                                className="border-right",
+                            ),
+                        ],
+                        className="border",
+                    ),
                 ]
             ),
         ],
@@ -304,7 +314,7 @@ howto_tab = html.Div(
         dcc.Markdown(howto.datatable_conditional_formatting2),
         html.Div(
             make_code_box(
-                "conditional_formatting example code",
+                "conditional formatting example code",
                 "copy_conditional_formatting2",
                 "md_conditional_formatting2",
                 howto.datatable_conditional_formatting2_code,
@@ -353,6 +363,17 @@ howto_tab = html.Div(
         dcc.Markdown(howto.gen_copy_to_clipboard),
         # Deployment
         dcc.Markdown(howto.deployment),
+        # Options
+        dcc.Markdown(howto.gen_options),
+        html.Div(
+            make_code_box(
+                "dropdown options example code",
+                "copy_dropdown_optons",
+                "md_dropdown_options",
+                howto.gen_options_code,
+            ),
+            className="ml-4",
+        ),
     ]
 )
 

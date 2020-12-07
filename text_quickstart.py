@@ -45,8 +45,9 @@ if __name__ == '__main__':
 ```"""
 
 datatable_intro = """
- [-Dash DataTable Tutorial](https://dash.plotly.com/datatable)  
- [-Dash DataTable Reference](https://dash.plotly.com/datatable/reference) 
+ [Dash DataTable Tutorial](https://dash.plotly.com/datatable)  
+  
+ [Dash DataTable Reference](https://dash.plotly.com/datatable/reference) 
 """
 
 datatable_code = """```                            
@@ -70,9 +71,9 @@ datatable_code = """```
 
 
 bootstrap_intro = """    
-[-dash-bootstrap documentation & tutorial](https://dash-bootstrap-components.opensource.faculty.ai/docs/quickstart/)  
+[dash-bootstrap documentation & tutorial](https://dash-bootstrap-components.opensource.faculty.ai/docs/quickstart/)  
 
--[ My favorite Bootstrap cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)
+[ My favorite Bootstrap cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/)
 """
 
 bootstrap_code = """``` 
@@ -88,10 +89,9 @@ bootstrap_code = """```
             html.Hr(),
             dbc.Row(
                 [
-                    dbc.Col('row 1, column 1 content', md=3),
-                    dbc.Col('row 1, column 2 content', md=9),
-                ],
-                align="center",
+                    dbc.Col('row 1, column 1 content', md=6),
+                    dbc.Col('row 1, column 2 content', md=6),
+                ],                
             ),
         ],
         fluid=True,
@@ -103,7 +103,7 @@ bootstrap_code = """```
 ```"""
 
 leaflet_intro = """    
-[-dash-leaflet documentation](https://dash-leaflet.herokuapp.com/)
+[dash-leaflet documentation](https://dash-leaflet.herokuapp.com/)
 """
 
 
@@ -366,21 +366,21 @@ callback_extras_code = """
 """
 
 
-components_intro = """ 
+components_intro = """      
+[Dash Core Components Overview](https://dash.plotly.com/dash-core-components) 
      
-[-Dash Core Components Overview](https://dash.plotly.com/dash-core-components) 
-     
-[-Dash HTML Components list](https://dash.plotly.com/dash-html-components)
-     
-[-Plotly Figure Reference](https://plotly.com/python/reference/index/) 
-     
-[-Plotly Figure Structure Tutorial](https://plotly.com/python/figure-structure/) 
-     
-[-Overview of Plotly Express](https://plotly.com/python/plotly-express/)
-
+[Dash HTML Components list](https://dash.plotly.com/dash-html-components) 
 """
 
+figure_intro = """ 
+[Plotly Figure Reference](https://plotly.com/python/reference/index/) 
 
+[Plotly Figure Structure Tutorial](https://plotly.com/python/figure-structure/) 
+
+[Overview of Plotly Express](https://plotly.com/python/plotly-express/)
+
+[Plotly Express Reference](https://plotly.com/python-api-reference/plotly.express.html)
+"""
 
 with open(DEMO_APPS_PATH.joinpath("conditional_formatting.py")) as f:
     conditional_formatting_code = f.read()

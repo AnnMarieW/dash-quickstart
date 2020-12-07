@@ -255,7 +255,7 @@ gen_tabulator="""
     ---
     #### Dash Tabulator 
     This is an example app using the [Dash Tabulator component](https://community.plotly.com/t/tabulator-dash-component/42261/21?u=annmariew)
-    The Tabulator table has some nice features that the Dash DataTable does not have yet such as case insensitive filters,
+    The Tabulator table has some nice features that the Dash DataTable does not have yet, such as case insensitive filters
     and group-by functionality.  There is also an option to include calculations ike sums and averages.
        
     """
@@ -268,6 +268,53 @@ gen_copy_to_clipboard="""
     #### Copy to Clipboard
     Here is how to [copy text to a clipboard](https://github.com/AnnMarieW/dash-quickstart/blob/master/demo_apps/copy_to_clipboard.py)
      on a button click - like on the Quickstart page of this app
-
-
 """
+
+
+gen_options="""
+---
+#### Options for dropdowns
+How to make options for dropdowns from 2 columns of a dataframe
+"""
+
+gen_options_code="""```
+import dash
+from dash.dependencies import Input, Output
+import dash_html_components as html
+import dash_core_components as dcc
+import pandas as pd
+
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+data = dict(
+        [
+            ("Account", [1000, 1001, 1010, 1020, 1030]),
+            ("Description", ["Assets", "Cash", "Accounts Receivable", "Prepaid Expenses", "Inventory",]),
+
+        ]
+    )
+df = pd.DataFrame(data)
+
+options= [{'label': l, 'value':v} for l,v in dict(zip(df['Description'], df['Account'])).items()]
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app.layout = html.Div([
+    dcc.Dropdown(
+        id='account-dropdown',
+        options=options,
+        value=1000
+    ),
+    html.Div(id='output-div')
+])
+
+
+@app.callback(Output('output-div', 'children'), Input('account-dropdown', 'value'))
+def update(account):
+    return f'You have selected {account}'
+
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+
+
+```"""

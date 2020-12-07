@@ -18,6 +18,9 @@ created by Dash community member Adam Schroeder
 
 
 - Don't miss this [Awesome Dash](https://github.com/ucg8j/awesome-dash) GitHub repo.  It's a curated list of Dash and Plotly resources
+
+- Learn  how to annotate images [here](https://dash.plotly.com/annotations). This feature  also makes it easy to annotate
+images for measuring objects or building training sets for neural nets.
 ___
 
 
