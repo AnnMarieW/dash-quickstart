@@ -22,7 +22,7 @@ How to DataTables
 """
 
 datatable_format_numbers = """
-    #### How to Format numbers
+    #### How to format numbers
      - Here is an [app](https://formattable.pythonanywhere.com/).  to help format numerical data in the datatable.
        You can make selections and see the code used to format the table.
     """
@@ -41,7 +41,7 @@ datatable_fix_cut_off= """
 
 datatable_move_export_button="""
 ---
-#### How to Move Export or Toggle button
+#### How to move the export or toggle button
 Here are two options to move the buttons to the bottom of the table.  Change the "rule" to move the buttons to other
 locations.
 """
@@ -60,10 +60,10 @@ datatable_move_export_button_code="""
         columns=[{"name": i, "id": i, "hideable": True} for i in df.columns],
         export_format="xlsx",
         css=[
-            # Use this if only export button
+            # If export button only,  use this:
             #{"selector": ".export", "rule": "position:absolute; left: 0px; bottom:-30px"},
             
-            # Use this if both export button and toggle columns button
+            # If both export button and toggle columns button,  use this:
             {
                 "selector": ".dash-spreadsheet-menu",
                 "rule": "position:absolute; left:0px; bottom:-30px",
@@ -141,7 +141,7 @@ datatable_conditional_formatting2_code="""```
 
 datatable_spark_intro="""
 ---
-#### How to add Sparklines 
+#### How to add sparklines 
 - See this discussion on the forum for more information and code for the app in image below: [Sparklines as Fonts in a DataTable](https://community.plotly.com/t/sparklines-as-fonts-embedding-minimal-sparklines-in-tables-components/39468)
   
 """
@@ -157,7 +157,7 @@ How to Bootstrap
 """
 
 bootstrap_modal = """
-    #### How to use Modals
+    #### How to use modals
     - See an example here: [modal for help text](https://community.plotly.com/t/any-way-to-create-an-instructions-popout/18828/11?u=annmariew)
     """
 bootstrap_live_stages= """ 
@@ -176,7 +176,7 @@ How to Markdown
 """
 
 markdown_css="""
-#### How to style Blockquotes and Tables in dcc.Markdown
+#### How to style blockquotes and tables in dcc.Markdown
 - Blockquotes and tables are unstyled by default in Bootstrap. When using dcc.Markdown with Bootstrap add the following 
 to the .css file in the assets folder to add style to the Block quotes and Tables
 """
@@ -281,7 +281,7 @@ gen_tabulator="""
     #### How to use dash-tabulator 
     This is an example app using the [Dash Tabulator component](https://community.plotly.com/t/tabulator-dash-component/42261/21?u=annmariew)
     The Tabulator table has some nice features that the Dash DataTable does not have yet, such as case insensitive filters
-    and group-by functionality.  There is also an option to include calculations ike sums and averages.
+    and group-by functionality.  There is also an option to include calculations like sums and averages.
        
     """
 gen_tabulator_image="""

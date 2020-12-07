@@ -424,6 +424,7 @@ quickstart_codebocks = [
     "DataTable",
     "conditional_formatting",
     "conditional_formatting2",
+    "callback_extras",
     "bootstrap",
     "leaflet",
     "callback",
