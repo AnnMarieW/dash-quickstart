@@ -16,13 +16,6 @@ df = pd.DataFrame(data)
 
 app = dash.Dash(__name__)
 
-app.layout = dash_table.DataTable(
-    id='table',
-    columns=[{"name": i, "id": i} for i in df.columns],
-    data=df.to_dict('records'),
-)
-
-
 df['id'] = df.index
 app.layout = dash_table.DataTable(
     data=df.to_dict('records'),

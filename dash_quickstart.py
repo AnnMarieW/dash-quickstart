@@ -308,9 +308,30 @@ howto_tab = html.Div(
         # DataTable Formatting numbers
         dcc.Markdown(howto.datatable_format_numbers),
         #make_image_row("format_numbers", howto.datatable_format_numbers_image),
+
+        # DataTable Formatting dates
+        dcc.Markdown(howto.datatable_format_dates),
+        html.Div(
+            make_code_box(
+                "formatting dates  example code",
+                "formatting_dates",
+                howto.datatable_format_dates_code,
+            ),
+            className="ml-4",
+        ),
+
         # DataTable Move export button
         dcc.Markdown(howto.datatable_move_export_button),
-        dcc.Markdown(howto.datatable_move_export_button_code, className="ml-4"),
+        html.Div(
+            make_code_box(
+                "move the export and toggle buttons  example code",
+                "move_export",
+                howto.datatable_move_export_button_code
+            ),
+            className="ml-4",
+        ),
+
+
         # DataTable Conditional formatting
         dcc.Markdown(howto.datatable_conditional_formatting),
         dcc.Markdown(howto.datatable_conditional_formatting2),
@@ -423,13 +444,17 @@ quickstart_codebocks = [
     "quickstart",
     "DataTable",
     "conditional_formatting",
-    "conditional_formatting2",
     "callback_extras",
     "bootstrap",
     "leaflet",
     "callback",
     "pattern_match",
     "datasets",
+    # in howto tab
+    "formatting_dates",
+    "move_export",
+    "conditional_formatting2",
+    "dropdown_options",
 ]
 [
     app.clientside_callback(

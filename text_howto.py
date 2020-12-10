@@ -23,7 +23,7 @@ How to DataTables
 
 datatable_format_numbers = """
     #### How to format numbers
-     - Here is an [app](https://formattable.pythonanywhere.com/).  to help format numerical data in the datatable.
+     - Here is an [app](https://formattable.pythonanywhere.com/).  to help format numbers in the Dash DataTable.
        You can make selections and see the code used to format the table.
     """
 
@@ -31,18 +31,75 @@ datatable_format_numbers_image = """
     https://user-images.githubusercontent.com/72614349/100634046-05729c80-32ec-11eb-9dba-a966b36a44ba.png
     """
 
+
+datatable_format_dates="""
+    #### How to format dates
+    When formatting numbers in a DataTable with the `format` parameter, only the display format changes. The number 
+    itself does not change. For dates, it's necessary to change the datetime object to a string. The following
+    code shows different format options using dt.strftime. Note: for dates to sort correctly, the 
+    date should be formatted as YYYY-MM-DD.  
+"""
+
+datatable_format_dates_code="""```
+import dash
+import dash_table
+import pandas as pd
+
+app = dash.Dash(__name__)
+
+data = dict(
+        [
+            ("Date", ["2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"]),
+            ("Region", ["Montreal", "Toronto", "New York City", "Miami", "San Francisco", "London"]),
+            ("Temperature", [1, -20, 3.512, 4, 10423, -441.2]),
+            ("Humidity", [10, 20, 30, 40, 50, 60]),
+            ("Pressure", [2, 10924, 3912, -10, 3591.2, 15]),
+        ]
+)
+df = pd.DataFrame(data)
+
+df["Date"] = pd.to_datetime(df["Date"])
+df["Date1"] = df["Date"].dt.date
+df["Date2"] = df["Date"].dt.strftime("%m/%d/%Y")
+df["Date3"] = df["Date"].dt.strftime("%a, %b %-d, %Y")
+
+
+app.layout = dash_table.DataTable(
+    data=df.to_dict("records"),
+    sort_action="native",
+    columns=[
+        {"name": "Date", "id": "Date", "type": "datetime", "editable": False},
+        {"name": "Date1", "id": "Date1", "type": "datetime"},
+        {"name": "Date2", "id": "Date2", "type": "datetime"},
+        {"name": "Date3", "id": "Date3", "type": "datetime"},
+        {"name": "Region", "id": "Region", "type": "text"},
+        {"name": "Temperature", "id": "Temperature", "type": "numeric"},
+        {"name": "Humidity", "id": "Humidity", "type": "numeric"},
+        {"name": "Pressure", "id": "Pressure", "type": "any"},
+    ],
+    editable=True,
+)
+
+if __name__ == "__main__":
+    app.run_server(debug=True)
+```"""
+
+
+
+
+
 datatable_fix_cut_off= """   
     ---
     
     #### How to fix rows with cut off data 
-    - When using Bootstrap with the datatable there is a conflict with the row class that will cause the data to overflow
+    - When using Bootstrap with the DataTable there is a conflict with the row class that will cause the data to overflow
     the table container.  It can be fixed with some custom css. See more info
-    [Here](https://dash-bootstrap-components.opensource.faculty.ai/docs/faq/)"""
+    [here](https://dash-bootstrap-components.opensource.faculty.ai/docs/faq/)"""
 
 datatable_move_export_button="""
 ---
 #### How to move the export or toggle button
-Here are two options to move the buttons to the bottom of the table.  Change the "rule" to move the buttons to other
+Here are two ways to move the buttons to the bottom of the table.  Change the "rule" to move the buttons to other
 locations.
 """
 datatable_move_export_button_code="""
@@ -82,13 +139,13 @@ datatable_conditional_formatting="""
 
 - Here is an [app](https://github.com/AnnMarieW/dash-quickstart/blob/master/demo_apps/conditional_formatting.py)
 like the one used in the [Conditional Formatting](https://dash.plotly.com/datatable/conditional-formatting) 
-chapter in the Dash Tutorial.
+chapter in the Dash Tutorial.  This is a helpful quickstart app.
 """
 
 image="- ![conditional_format](https://user-images.githubusercontent.com/72614349/100655403-7758df00-3308-11eb-9d6e-079d3114b5eb.png)"
 datatable_conditional_formatting2="""
 
-- The following is an example of how to set the background color for column based on the values in the column:  
+- The following is an example app to show how to set the background color for column based on the values in the column:  
 """
 datatable_conditional_formatting2_code="""```
     import dash
@@ -241,8 +298,8 @@ How to General
 gen_multi_page= """
     #### How to make a multi-page app
     - The [multi-page app in this directory](https://github.com/AnnMarieW/dash-quickstart/tree/master/demo_apps/multi-page-app)
-    was created using these two single page apps as [app1](https://dash.plotly.com/interactive-graphing) and [app2](https://dash.plotly.com/basic-callbacks) 
-    from the Dash Tutorial.  It follows the [Structuring a Multi-Page App](https://dash.plotly.com/urls) example to create
+    was created using these two single page apps from the Dash Tutorial as [app1](https://dash.plotly.com/interactive-graphing) and [app2](https://dash.plotly.com/basic-callbacks) 
+    It follows the [Structuring a Multi-Page App](https://dash.plotly.com/urls) example to create
     the multi page app.  
     """
 
@@ -251,7 +308,7 @@ gen_multi_page= """
 gen_image_in_bubble="""
     ---
     #### How to make a graph with images inside bubbles
-    - See the code here: [Graph with images inside bubble](https://community.plotly.com/t/put-images-inside-bubbles/41364/2)
+    - See the code [here](https://community.plotly.com/t/put-images-inside-bubbles/41364/2)
     """
 gen_image_in_bubble_image="""
     https://user-images.githubusercontent.com/72614349/100633817-c6dce200-32eb-11eb-81a9-fcc3027f50f0.png    
@@ -259,7 +316,7 @@ gen_image_in_bubble_image="""
 
 gen_real_time_data="""
     #### How to make a graph with real time data
-    - See code here: [real time data](https://stackoverflow.com/questions/63589249/plotly-dash-display-real-time-data-in-smooth-animation)
+    - See the code [here](https://stackoverflow.com/questions/63589249/plotly-dash-display-real-time-data-in-smooth-animation)
     """
 
 gen_real_time_data_image="""
@@ -269,8 +326,8 @@ gen_real_time_data_image="""
 gen_pattern_matching="""
     ---
     #### How to do pattern matching callbacks
-    Here is an example of a [Pattern Matching Callback](https://community.plotly.com/t/pattern-call-backs-regarding-adding-dynamic-graphs/40724/4?u=annmariew)
-    with deletable charts.  See tutorial  [here](https://dash.plotly.com/pattern-matching-callbacks).
+    Here is an example of [pattern matching callbacks](https://community.plotly.com/t/pattern-call-backs-regarding-adding-dynamic-graphs/40724/4?u=annmariew)
+    This app has deletable charts.  See pattern matching callbacks tutorial [here](https://dash.plotly.com/pattern-matching-callbacks).
     """
 gen_pattern_matching_image="""
     https://user-images.githubusercontent.com/72614349/100633822-c8a6a580-32eb-11eb-975e-329f50689904.gif
@@ -340,6 +397,4 @@ def update(account):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
-
 ```"""
