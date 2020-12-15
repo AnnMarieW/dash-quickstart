@@ -7,7 +7,7 @@ tips="""
     PEP 8 compliant, but it also helps you code faster.  No need to spend a lot of time focusing on things like spacing 
     and alignment - -  Black can do that for you in a sec!  It also makes  your code easier to read and to debug.
     
-- When you have mulitple inputs and outputs, the callbacks can get quite long.  A [best practice][#1054] is to break the
+- When you have multiple inputs and outputs, the callbacks can get quite long.  A [best practice][#1054] is to break the
  callbacks into smaller functions so that a multiple-input callback acts like a router. 
 
 - As you add more features and pages to your app, it can grow to be hundreds( or thousands!) of lines of code.  It then
@@ -15,14 +15,14 @@ tips="""
     [multi - page app file structure][dash-docs-urls]
    
  - To track performance, you can find great information on how long callbacks are taking by using the [Dev tools][dev-tools].
-     The callback graph is fascinating!
+     The callback graph is fascinating.
 
- -  When using custom colors in your app, consider putting all the colors in a dictionary in the global namespace. Then assign
-     the colors using the dictionary. When the colors are defined in one place, it is easier to manage and change the color schemes.
-     This becomes even more important as the size of our app grows. See example [here][color-dict]
+ -  When using custom colors in your app, try keeping all the colors in a dictionary.  When the colors are 
+    defined in one place, it's easier to manage and change the color schemes.  This becomes even more important as the 
+    size of our app grows. See a simple example [here][color-dict]
 
-- To see all of the properties available for a component, type this in your Python console:
-    ``` help(dash_core_components.Slider)``` or any other component name
+- To see all of the properties available for a component, type help(component)  in your Python console.  For example:
+    ``` help(dash_core_components.Slider)``` 
 
     
 ---
@@ -38,6 +38,11 @@ tips="""
  
 ---
 
+## Troubleshooting
+
+- (This section will include:  What to do when... callbacks don't fire, graph doesn't show, table is empty, etc)
+
+---
 [black]: https://black.readthedocs.io/en/stable/
 [#1054]: https://github.com/plotly/dash/issues/1054
 [dash-docs-urls]:https://dash.plotly.com/urls

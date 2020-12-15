@@ -4,7 +4,7 @@ This app is a quickstart guide for Plotly Dash app
 hosted at: https://dashquickstart.pythonanywhere.com/
 
 All of the markdown content is in the text_*.py files
-
+ todo:  https://www.xaprb.com/blog/how-to-style-images-with-markdown/
 """
 
 import dash
@@ -25,6 +25,7 @@ FONT_AWESOME = (
 )
 
 app = dash.Dash(__name__, external_stylesheets=[FONT_AWESOME, dbc.themes.SPACELAB,])
+
 
 
 """
@@ -363,8 +364,34 @@ howto_tab = html.Div(
         html.H3("Markdown", className="bg-primary text-white my-4"),
         # Markdoown - bootstrap fixes
         dcc.Markdown(howto.markdown_css),
-        dcc.Markdown(howto.markdown_css_code, className="ml-4"),
+        #dcc.Markdown(howto.markdown_css_code, className="ml-4"),
+        html.Div(
+            make_code_box(
+                "CSS for styling blockquotes and tables",
+                "markdown_css",
+                howto.markdown_css_code
+            ),
+            className="ml-4",
+        ),
+        # Markdown - image size
+        dcc.Markdown(howto.markdown_image_size),
         #
+        ## Dash DAQ
+        #
+        html.H3("Dash DAQ", className="bg-primary text-white my-4"),
+        #
+        dcc.Markdown(howto.dash_daq),
+        html.Div(
+            make_code_box(
+                "dash daq style with css example code",
+                "dash_daq",
+                howto.dash_daq_code
+            ),
+            className="ml-4",
+        ),
+        dcc.Markdown(howto.dash_daq2),
+
+
         ## GENERAL
         #
         html.H3("General", className="bg-primary text-white my-4"),
@@ -382,7 +409,7 @@ howto_tab = html.Div(
         dcc.Markdown(howto.gen_real_time_data),
         make_image_row("real_time", howto.gen_real_time_data_image),
         # Copy
-        dcc.Markdown(howto.gen_copy_to_clipboard),
+        #dcc.Markdown(howto.gen_copy_to_clipboard),
         # Deployment
         dcc.Markdown(howto.deployment),
         # Options
@@ -395,7 +422,7 @@ howto_tab = html.Div(
             ),
             className="ml-4",
         ),
-    ]
+    ], className='m-4'
 )
 
 """

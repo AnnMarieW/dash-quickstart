@@ -2,11 +2,11 @@
 
 more_text = """ 
 
-## Where to find more help
+## Where to find more information
 
 
 - One of the best sources of information about Dash is in the official Plotly [Dash Tutorial][dash-tutorial]
-and documentation.  It's continually being updated as new features are added to Dash and Plotly.  It also has lots of great examples.  
+and documentation.  It's updated frequently as new features are added to Dash and Plotly.  It also has lots of great examples.  
 
 - Check out the  [Dash Community Forum](https://community.plotly.com/). You will probably find an answer in one of the posts,
 but if not, try posting a question.
@@ -21,6 +21,22 @@ created by Dash community member Adam Schroeder
 
 - Learn  how to annotate images [here](https://dash.plotly.com/annotations). This feature  also makes it easy to annotate
 images for measuring objects or building training sets for neural nets.
+
+- This  [fascinating article on data visualization theory](http://nicolas.kruchten.com/semiology_of_graphics/) uses
+  Plotly Express to re-create the figures from the 1967 classic, Semiology of Graphics: Diagrams, Networks, Maps by
+   Jacques Bertin. Follow along and play with the code from the article in this [Jupiter Notebook](https://mybinder.org/v2/gh/nicolaskruchten/semiology_of_graphics/HEAD?filepath=Remaking%20Figures%20from%20Semiology%20of%20Graphics.ipynb).
+  It makes a great Plotly Express tutorial!
+  
+-  Check out interesting talks and articles by [Nicolas Kruchten](https://nicolas.kruchten.com/) the VP of Product at Plotly
+
+  
+
+
+
+
+
+
+
 ___
 
 

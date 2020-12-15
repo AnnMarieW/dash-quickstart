@@ -1,3 +1,53 @@
+/****  css to change the Loading.... see loading.py   **********/
+._dash-loading {
+  margin: auto;
+  color: transparent;
+  width: 0;
+  height: 0;
+  text-align: center;
+}
+
+/*********   change image sizes in markdown ************/
+img[src*="#thumbnail"] {
+   width:100px;
+   height:100px;
+}
+
+img[src*="#monster"] {
+   width:75px;
+   height:75px;
+}
+
+/*** css to change the font style in a gauge see daq_gauge.py  ****/
+#my_gauge .cRfgdB .scale {
+    font-size: 8px;
+}
+#my_gauge .jjZFEi {
+	text-align: center;
+	font-size: 25px;
+}
+
+
+
+._dash-loading::after {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  color: black;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spinner-border 0.75s linear infinite;
+  animation: spinner-border 0.75s linear infinite;
+  margin-top: 2rem;
+}
+/****  End  loading css  **********/
+
+
+
+
 
 .dash-table-container .row {
   display: block;

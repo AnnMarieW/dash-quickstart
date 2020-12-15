@@ -1,4 +1,13 @@
 
+import pathlib
+# set relative path
+PATH = pathlib.Path(__file__).parent
+DEMO_APPS_PATH = PATH.joinpath("./demo_apps").resolve()
+# be sure to include a blank line and docstring at start of source file
+# with open(DEMO_APPS_PATH.joinpath("conditional_formatting.py")) as f:
+#     code = f.read()
+# code  = f"```{code}```"
+
 """
 ================================================================================
 IMAGES
@@ -12,7 +21,7 @@ IMAGES
 ![pattern-matching](https://user-images.githubusercontent.com/72614349/100633822-c8a6a580-32eb-11eb-975e-329f50689904.gif)
 ![format_helper](https://user-images.githubusercontent.com/72614349/100634046-05729c80-32ec-11eb-9dba-a966b36a44ba.png
 ![progress_bar](https://user-images.githubusercontent.com/72614349/100642053-82eeda80-32f5-11eb-8a5b-dc56d77a85ea.gif)
-
+![cookie_monster](https://todaysmama.com/.image/t_share/MTU5OTEwMzkyMDIyMTE1NzAz/cookie-monster.png#thumbnail)
 """
 
 
@@ -21,7 +30,7 @@ IMAGES
 How to DataTables
 """
 
-datatable_format_numbers = """
+datatable_format_numbers = """    
     #### How to format numbers
      - Here is an [app](https://formattable.pythonanywhere.com/).  to help format numbers in the Dash DataTable.
        You can make selections and see the code used to format the table.
@@ -94,7 +103,11 @@ datatable_fix_cut_off= """
     #### How to fix rows with cut off data 
     - When using Bootstrap with the DataTable there is a conflict with the row class that will cause the data to overflow
     the table container.  It can be fixed with some custom css. See more info
-    [here](https://dash-bootstrap-components.opensource.faculty.ai/docs/faq/)"""
+    [here](https://dash-bootstrap-components.opensource.faculty.ai/docs/faq/)
+    
+    Breaking News... as of Dec 2020, this was fixed.  Now all you need to do is upgrade to the latest version of Dash!
+    
+    """
 
 datatable_move_export_button="""
 ---
@@ -273,7 +286,61 @@ blockquote {
 
 ```"""
 
+markdown_image_size = '''
+---
+#### How to resize an image
 
+ - To resize an image when using dcc.Markdown, add a URL parameter to the file name.  In this example it's #thumbnail:  
+ 
+    `![cookie_monster](https://todaysmama.com/.image/t_share/MTU5OTEwMzkyMDIyMTE1NzAz/cookie-monster.png#thumbnail)`
+    
+    Then adjust the size in the .css file:
+    ```
+    img[src*="#thumbnail"] {
+       width:100px;
+       height:100px;
+    }
+    ```
+    ![cookie_monster](https://todaysmama.com/.image/t_share/MTU5OTEwMzkyMDIyMTE1NzAz/cookie-monster.png#thumbnail)  
+     
+    If the image is in the assets directory, use this:
+    `dcc.Markdown('![]({})'.format(app.get_asset_url('my_image.svg#thumbnail')))`
+    
+    To embed the image with other text, it needs to be a single string:  
+    
+    `dcc.Markdown("My intro text" + '![]({})'.format(app.get_asset_url('my_image.svg#thumbnail')) + "My other text")`
+        
+    '''
+
+
+"""gauge.png
+===============================================================================
+How to Dash DAQ
+"""
+
+dash_daq="""
+    #### How to style a daq.Gauge with custom css
+    Dash DAQ has a set of controls that make it simpler to integrate 
+    data acquisition and controls into your Dash apps.
+    See the [overview](https://dash.plotly.com/dash-daq) for more info.    
+    
+    This example shows how to use custom css to change the size of the text. See this 
+    [discussion](https://community.plotly.com/t/dash-daq-gauge-font-size/25453/6?u=annmariew) on the forum    
+    
+    ![gauge](https://user-images.githubusercontent.com/72614349/102272420-f986fd00-3edd-11eb-87c3-a8c7d10d84f5.png#gauge)
+
+"""
+
+dash_daq2="""
+    -----
+    #### How to style a daq.Guage with a custom scale
+    See this example on the [forum](https://community.plotly.com/t/how-to-change-space-between-radio-button-and-label-font-size-of-gauges/39912/7)
+
+"""
+
+with open(DEMO_APPS_PATH.joinpath("daq_gauge.py")) as f:
+    dash_daq_code = f.read()
+dash_daq_code  = f"```{dash_daq_code}```"
 
 """
 ===============================================================================

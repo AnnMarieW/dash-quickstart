@@ -384,4 +384,4 @@ figure_intro = """
 
 with open(DEMO_APPS_PATH.joinpath("conditional_formatting.py")) as f:
     conditional_formatting_code = f.read()
-conditional_formatting_code = ''.join(['```', conditional_formatting_code, '```'])
+conditional_formatting_code  = f"```{conditional_formatting_code}```"
